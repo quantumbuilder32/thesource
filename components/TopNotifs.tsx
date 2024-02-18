@@ -5,7 +5,7 @@ export default function TopNotifs() {
     return (
         <div style={{ display: "flex", flexWrap: "wrap" }}>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
-                <p className='highlight'>1-877-RESTORE</p>
+                <p className='highlight'>850-855-2125</p>
                 <p>Available 24/7/365</p>
             </div>
 

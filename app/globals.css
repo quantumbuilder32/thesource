@@ -2,14 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {}
+:root {
+  --mainColor: gold;
+  --secondaryColor: orange;
+}
 
 *,
 *::before,
 *::after {
-  border: 1px solid red !important;
-  --mainColor: gold;
-  --secondaryColor: orange;
+  /* border: 1px solid red !important; */
 }
 
 svg {
