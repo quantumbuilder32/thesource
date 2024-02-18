@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Lato } from "next/font/google";
 import "./globals.css";
-import TopNotifs from "@/components/TopNotifs";
+import TopNotifs from "@/components/topnotifs/TopNotifs";
 import Logo from "@/components/logo/Logo";
+import Navbar from "@/components/navbar/Navbar";
 
-const inter = Inter({ subsets: ["latin"] });
+const lato = Lato({ subsets: ["latin"], weight: ["100", "400", "700"] });
 
 export const metadata: Metadata = {
   title: "The Source",
@@ -18,9 +19,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <TopNotifs />
-        <Logo />
+      <body className={lato.className}>
+        <div style={{ backgroundColor: "#000" }}>
+          <TopNotifs />
+          <Logo />
+          <Navbar />
+        </div>
         {children}
       </body>
     </html>

@@ -1,0 +1,29 @@
+.nav {
+    color: #fff;
+    position: relative;
+    z-index: 999;
+    white-space: nowrap;
+}
+
+.menuCont {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.menuItem {
+    position: relative;
+}
+
+.subMenuCont {
+    position: absolute;
+    background-color: #000;
+}
+
+.subMenuItem {
+    padding: 1rem;
+}
+
+
+
+@media only screen and (max-width: 1000px) {}
