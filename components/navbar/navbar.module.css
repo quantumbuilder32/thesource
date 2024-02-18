@@ -44,6 +44,7 @@
         position: relative;
         max-height: 60vh;
         overflow-y: auto;
+        gap: 0
     }
 
     .splitCont {
