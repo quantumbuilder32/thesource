@@ -3,6 +3,7 @@
     position: relative;
     z-index: 999;
     white-space: nowrap;
+    display: grid;
 }
 
 .menuCont {

@@ -4,6 +4,7 @@ import "./globals.css";
 import TopNotifs from "@/components/topnotifs/TopNotifs";
 import Logo from "@/components/logo/Logo";
 import Navbar from "@/components/navbar/Navbar";
+import AtomLoader from "@/components/AtomLoader";
 
 const lato = Lato({ subsets: ["latin"], weight: ["100", "400", "700"] });
 
@@ -20,6 +21,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={lato.className}>
+        <AtomLoader />
+
         <div style={{ backgroundColor: "#000" }}>
           <TopNotifs />
           <Logo />
