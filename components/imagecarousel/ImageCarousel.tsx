@@ -1,12 +1,12 @@
 "use client"
 import Image from 'next/image'
 import Link from 'next/link'
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import styles from "./imagecarousel.module.css"
 
 export default function ImageCarousel() {
     const [activeIndex, activeIndexSet] = useState(0)
-    const [slideInfo, slideInfoSet] = useState([
+    const [slidesInfo, slidesInfoSet] = useState([
         {
             mainTitle: "Revitalize Your Home",
             supportingText: "Transform your living space with our expert painting services. From vibrant accent walls to elegant color schemes, we bring your vision to life.",
@@ -26,13 +26,28 @@ export default function ImageCarousel() {
             bgImage: require(`@/public/slide3.jpeg`).default.src
         }
     ])
+    const [userManualScroll, userManualScrollSet] = useState(false)
+
+    useEffect(() => {
+        if (userManualScroll) return
+
+        const intervalId = setInterval(() => {
+            activeIndexSet((prevIndex) => (prevIndex + 1) % slidesInfo.length);
+        }, 5000);
+
+        return () => clearInterval(intervalId);
+
+    }, [userManualScroll]);
+
+    const userClickTimeout = useRef<NodeJS.Timeout>()
+
 
     return (
         <div style={{ height: "80svh", position: "relative" }}>
             <div style={{ position: "absolute", top: 0, left: 0, bottom: 0, right: 0, backgroundColor: "rgba(0,0,0,0.7)", zIndex: 2, }}></div>
 
 
-            {slideInfo.map((eachSlide, eachSlideIndex) => {
+            {slidesInfo.map((eachSlide, eachSlideIndex) => {
                 return (
                     <React.Fragment key={eachSlideIndex}>
                         <Image alt='img' src={eachSlide.bgImage} priority={eachSlideIndex === activeIndex} fill={true} style={{ objectFit: "cover", opacity: eachSlideIndex === activeIndex ? 1 : 0, transition: "opacity 600ms", zIndex: 1 }} />
@@ -55,10 +70,20 @@ export default function ImageCarousel() {
                 )
             })}
 
-            <div style={{ position: "absolute", bottom: 0, left: "50%", translate: "-50% 0", display: "flex", gap: ".5rem", padding: "1rem" }}>
-                {slideInfo.map((eachSlide, eachSlideIndex) => {
+            <div style={{ position: "absolute", bottom: 0, left: "50%", translate: "-50% 0", display: "flex", gap: ".5rem", padding: "1rem", zIndex: 2 }}>
+                {slidesInfo.map((eachSlide, eachSlideIndex) => {
                     return (
-                        <div key={eachSlideIndex} style={{ aspectRatio: "1/1", width: "1rem", borderRadius: "50%", backgroundColor: eachSlideIndex === activeIndex ? "var(--mainColor)" : "var(--fadedColor)", cursor: "pointer" }} onClick={() => activeIndexSet(eachSlideIndex)}></div>
+                        <div key={eachSlideIndex} style={{ aspectRatio: "1/1", width: "1rem", borderRadius: "50%", backgroundColor: eachSlideIndex === activeIndex ? "var(--mainColor)" : "var(--fadedColor)", cursor: "pointer" }} onClick={() => {
+                            userManualScrollSet(true)
+
+                            if (userClickTimeout.current) clearTimeout(userClickTimeout.current)
+
+                            userClickTimeout.current = setTimeout(() => {
+                                userManualScrollSet(false)
+                            }, 30000);
+
+                            activeIndexSet(eachSlideIndex)
+                        }}></div>
                     )
                 })}
             </div>
