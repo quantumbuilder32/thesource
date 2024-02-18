@@ -4,12 +4,17 @@
     z-index: 999;
     white-space: nowrap;
     display: grid;
+    align-content: flex-start;
 }
 
 .menuCont {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
+}
+
+.splitCont {
+    display: flex;
 }
 
 .menuItem {
@@ -26,5 +31,17 @@
 }
 
 
+@media only screen and (max-width: 1000px) {
+    .menuCont {
+        display: grid;
+    }
 
-@media only screen and (max-width: 1000px) {}
+    .splitCont {
+        display: grid;
+    }
+
+    .subMenuCont {
+        position: relative;
+    }
+
+}

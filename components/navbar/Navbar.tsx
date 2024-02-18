@@ -99,7 +99,7 @@ export default function Navbar({ menuItemArr = navItemsArr }: { menuItemArr?: me
             <ul className={styles.menuCont}>
                 {(screenSize.desktop || menuItemsShowing) && (
                     <>
-                        <div style={{ display: "flex", flex: "1 1 700px" }}>
+                        <div className={styles.splitCont} style={{ flex: "1 1 700px" }}>
                             {menuItemArr.slice(0, 3).map((eachMenuItem) => {
                                 return (
                                     <MenuItem key={eachMenuItem.id} eachMenuItem={eachMenuItem} />
@@ -107,7 +107,7 @@ export default function Navbar({ menuItemArr = navItemsArr }: { menuItemArr?: me
                             })}
                         </div>
 
-                        <div style={{ display: "flex", }}>
+                        <div className={styles.splitCont} style={{}}>
                             {menuItemArr.slice(3, 5).map((eachMenuItem) => {
                                 return (
                                     <MenuItem key={eachMenuItem.id} eachMenuItem={eachMenuItem} />
