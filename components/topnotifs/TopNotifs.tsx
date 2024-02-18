@@ -4,7 +4,7 @@ import styles from "./topnotifs.module.css"
 
 export default function TopNotifs() {
     return (
-        <div style={{ display: "flex", flexWrap: "wrap", padding: "1rem", backgroundColor: "var(--backgroundColor)" }}>
+        <div style={{ display: "flex", flexWrap: "wrap", padding: "1rem", backgroundColor: "var(--backgroundColor)", alignItems: "center" }}>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
                 <p className='highlight'>850-855-2125</p>
                 <p>Available 24/7/365</p>
