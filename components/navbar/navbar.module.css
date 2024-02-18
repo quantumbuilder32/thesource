@@ -41,6 +41,9 @@
 @media only screen and (max-width: 1000px) {
     .menuCont {
         display: grid;
+        position: relative;
+        max-height: 60vh;
+        overflow-y: auto;
     }
 
     .splitCont {
