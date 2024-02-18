@@ -21,6 +21,7 @@
     position: relative;
 }
 
+
 .subMenuCont {
     position: absolute;
     background-color: #000;
@@ -28,7 +29,13 @@
 
 .subMenuItem {
     padding: 1rem;
+    transition: filter 400ms;
 }
+
+.subMenuItem:hover {
+    filter: brightness(.6);
+}
+
 
 
 @media only screen and (max-width: 1000px) {

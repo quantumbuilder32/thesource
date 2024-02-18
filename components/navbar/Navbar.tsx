@@ -127,7 +127,7 @@ function MenuItem({ eachMenuItem }: { eachMenuItem: menuItem }) {
 
     return (
         <li className={styles.menuItem}>
-            <div className={styles.chevronCont} style={{ display: "flex", flexWrap: "wrap", gap: ".5rem", alignItems: "center", padding: "1rem" }} onClick={() => {
+            <div className={styles.chevronCont} style={{ display: "flex", flexWrap: "wrap", gap: ".5rem", alignItems: "center", padding: "1rem", cursor: "pointer" }} onClick={() => {
                 subMenuShowingSet(prev => !prev)
             }}>
                 <Link href={eachMenuItem.link}>
