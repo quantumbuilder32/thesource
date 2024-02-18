@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {}
+
+*,
+*::before,
+*::after {
+  border: 1px solid red !important;
+  --mainColor: gold;
+  --secondaryColor: orange;
+}
+
+svg {
+  width: 1rem;
+  aspect-ratio: 1/1;
+}
+
+.highlight {
+  color: var(--secondaryColor);
+  fill: var(--secondaryColor);
+}
