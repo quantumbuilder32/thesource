@@ -47,9 +47,9 @@ export default function Home() {
               img: "https://images.pexels.com/photos/5668430/pexels-photo-5668430.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
               text: "We work with facilities managers responsible for maintaining public buildings, schools, healthcare facilities."
             },
-          ].map(eachItem => {
+          ].map((eachItem, eachItemIndex) => {
             return (
-              <div style={{ color: "#fff", display: "grid", gridTemplateRows: "1.3fr 1fr", scrollSnapAlign: "start" }}>
+              <div key={eachItemIndex} style={{ color: "#fff", display: "grid", gridTemplateRows: "1.3fr 1fr", scrollSnapAlign: "start" }}>
                 <div style={{ position: "relative", display: "grid", alignItems: "center", justifyItems: "center" }}>
                   <Image className="hoverHighlight" alt={`${eachItem.title}image`} src={eachItem.img} height={400} width={400} style={{ objectFit: "cover", position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }} />
 
