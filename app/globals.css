@@ -16,8 +16,9 @@
 
 @media only screen and (max-width: 600px) {
   :root {
-    --h1FontSize: 1.5rem;
-
+    --h1FontSize: 2rem;
+    --h2FontSize: 1.1rem;
+    --smallFontSize: .6rem;
   }
 }
 
