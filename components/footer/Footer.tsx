@@ -6,7 +6,7 @@ import Link from 'next/link'
 export default function Footer() {
     return (
         <footer style={{ backgroundColor: "#000", padding: "5rem 2rem", fontSize: "var(--smallFontSize)" }}>
-            <div className={styles.footerNav} style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(200px, 100%), 1fr)", gap: "1rem", maxWidth: "900px", margin: "0 auto" }}>
+            <div className={styles.footerNav} style={{ display: "grid", gap: "1rem", maxWidth: "900px", margin: "0 auto", gridTemplateColumns: "repeat(auto-fit, minmax(min(200px, 100%), 1fr)" }}>
                 <div>
                     <h2>what we do</h2>
                     <p>At The Source, we specialize in providing comprehensive property maintenance services for homeowners, businesses, property managers, and facilities managers.</p>
