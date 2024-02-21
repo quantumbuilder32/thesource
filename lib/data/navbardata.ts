@@ -28,15 +28,15 @@ export const navItemsArr: menuItem[] = [
 
             },
             {
-                link: "", title: "Landscaping", id: 2,
+                link: "", title: "Maintenance", id: 2,
 
             },
             {
-                link: "", title: "Maintenance", id: 3,
+                link: "", title: "Custodial", id: 3,
 
             },
             {
-                link: "", title: "Deep Cleaning", id: 4,
+                link: "", title: "Management", id: 4,
 
             },
         ],

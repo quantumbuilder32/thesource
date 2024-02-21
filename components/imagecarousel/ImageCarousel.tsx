@@ -8,24 +8,25 @@ export default function ImageCarousel() {
     const [activeIndex, activeIndexSet] = useState(0)
     const [slidesInfo, slidesInfoSet] = useState([
         {
-            mainTitle: "Revitalize Your Home",
-            supportingText: "Transform your living space with our expert painting services. From vibrant accent walls to elegant color schemes, we bring your vision to life.",
-            buttonText: "Get a Free Painting Quote",
+            mainTitle: "Expert Maintenance",
+            supportingText: "Keep your property in top shape with our comprehensive maintenance solutions. From landscaping to pressure, we've got you covered.",
+            buttonText: "Schedule Maintenance",
             bgImage: require(`@/public/slide1.jpeg`).default.src
         },
         {
-            mainTitle: "Fixing Made Easy",
-            supportingText: "Don't let household repairs stress you out. Our skilled technicians are here to handle everything from leaky faucets to electrical issues, so you can enjoy peace of mind.",
-            buttonText: "Schedule a Fixing Service",
+            mainTitle: "Professional Custodial",
+            supportingText: "Ensure a clean and hygienic environment with our custodial services. Our house cleaning expertise covers everything indoors.",
+            buttonText: "Book House Cleaning",
             bgImage: require(`@/public/slide2.jpeg`).default.src
         },
         {
-            mainTitle: "Spotless Cleaning Services",
-            supportingText: "Experience the difference with our thorough cleaning services. From routine maintenance to deep cleaning, we leave your property sparkling clean and inviting.",
-            buttonText: "Book a Cleaning Appointment",
+            mainTitle: "Efficient Management",
+            supportingText: "Let us handle the management of your property with our smooth operations, guranteeing tenant satisfaction.",
+            buttonText: "Learn More",
             bgImage: require(`@/public/slide3.jpeg`).default.src
         }
-    ])
+    ]);
+
     const [userManualScroll, userManualScrollSet] = useState(false)
 
     useEffect(() => {
