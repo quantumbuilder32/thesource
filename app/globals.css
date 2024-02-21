@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --mainColor: gold;
+  --primaryColor: #e0a90e;
   --secondaryColor: orange;
   --backgroundColor: #2d2d2d;
   --fadedColor: #565656;
@@ -15,9 +15,11 @@
 *,
 *::before,
 *::after {
-  /* border: 1px solid red !important ; */
+  /* border: 1px solid red !important; */
 }
 
+
+/* elements */
 svg {
   width: 1rem;
   aspect-ratio: 1/1;
@@ -39,6 +41,11 @@ h1 {
   font-size: var(--h1FontSize);
 }
 
+h2 {
+  font-size: var(--h2FontSize);
+  font-family: roboto;
+}
+
 p {
   line-height: 29px;
 }
@@ -49,7 +56,7 @@ button {
   padding: 1rem 2rem;
   gap: .5rem;
   border-radius: .5rem;
-  background-color: var(--mainColor);
+  background-color: var(--primaryColor);
   align-items: center;
   color: #000;
 }
@@ -58,7 +65,9 @@ button svg {
   fill: #000
 }
 
-
+section {
+  padding: 2rem 1rem;
+}
 
 *::-webkit-scrollbar {
   height: 5px;
@@ -73,4 +82,17 @@ button svg {
 
 *::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+
+
+
+/* custom classes */
+.hoverHighlight {
+  cursor: pointer;
+  filter: brightness(.6);
+  transition: 1s;
+}
+
+.hoverHighlight:hover {
+  filter: none;
 }

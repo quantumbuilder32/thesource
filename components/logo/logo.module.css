@@ -1,6 +1,6 @@
 .logo {
     position: absolute;
-    top: 0;
+    top: .5rem;
     left: 50%;
     translate: -50% 0;
     z-index: 999;

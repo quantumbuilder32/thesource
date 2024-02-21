@@ -73,7 +73,7 @@ export default function ImageCarousel() {
             <div style={{ position: "absolute", bottom: 0, left: "50%", translate: "-50% 0", display: "flex", gap: ".5rem", padding: "1rem", zIndex: 2 }}>
                 {slidesInfo.map((eachSlide, eachSlideIndex) => {
                     return (
-                        <div key={eachSlideIndex} style={{ aspectRatio: "1/1", width: "1rem", borderRadius: "50%", backgroundColor: eachSlideIndex === activeIndex ? "var(--mainColor)" : "var(--fadedColor)", cursor: "pointer" }} onClick={() => {
+                        <div key={eachSlideIndex} style={{ aspectRatio: "1/1", width: "1rem", borderRadius: "50%", backgroundColor: eachSlideIndex === activeIndex ? "var(--primaryColor)" : "var(--fadedColor)", cursor: "pointer" }} onClick={() => {
                             userManualScrollSet(true)
 
                             if (userClickTimeout.current) clearTimeout(userClickTimeout.current)
