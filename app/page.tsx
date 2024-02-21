@@ -19,10 +19,10 @@ export default function Home() {
         </div>
       </section>
 
-      <h2 style={{ aspectRatio: "1/1", padding: "2rem", borderRadius: "50%", backgroundColor: "#000", position: "absolute", left: "50%", translate: "-50% -50%", display: "grid", alignItems: "center", justifyItems: "center", color: "#fff", zIndex: 2 }}>WE HELP</h2>
+      <h2 style={{ aspectRatio: "1/1", padding: "2rem", borderRadius: "50%", backgroundColor: "#000", position: "absolute", left: "50%", translate: "-50% -50%", display: "grid", alignItems: "center", justifyItems: "center", color: "#fff", zIndex: 2, textAlign: "center" }}>WE HELP</h2>
 
       <section>
-        <div style={{ display: "grid", gridAutoFlow: "column", gridAutoColumns: "min(350px, 90%)", gap: "1rem", overflowX: "auto", scrollSnapType: "x mandatory" }}>
+        <div style={{ display: "grid", gridAutoFlow: "column", gridAutoColumns: "min(350px, 95%)", gap: "1rem", overflowX: "auto", scrollSnapType: "x mandatory" }}>
           {[
             {
               title: "Homeowners",

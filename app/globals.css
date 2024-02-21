@@ -14,6 +14,13 @@
   --smallFontSize: .7rem;
 }
 
+@media only screen and (max-width: 600px) {
+  :root {
+    --h1FontSize: 1.5rem;
+
+  }
+}
+
 *,
 *::before,
 *::after {
@@ -58,7 +65,6 @@ p {
 
 button {
   display: flex;
-  flex-wrap: wrap;
   padding: 1rem 2rem;
   gap: .5rem;
   border-radius: .5rem;
