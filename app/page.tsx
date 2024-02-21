@@ -1,5 +1,7 @@
 import ImageCarousel from "@/components/imagecarousel/ImageCarousel";
+import { testimonials } from "@/lib/data/testimonials";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -62,6 +64,24 @@ export default function Home() {
               </div>
             )
           })}
+        </div>
+      </section>
+
+      <section style={{ backgroundColor: "var(--backgroundColor)" }}>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem", margin: "0 auto", maxWidth: "1100px" }}>
+          <div style={{ flex: "4 1 400px", display: "flex", alignItems: "flex-start", gap: ".5rem" }}>
+            <svg style={{ fill: "var(--fadedColor)", width: "4rem" }} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M0 216C0 149.7 53.7 96 120 96h8c17.7 0 32 14.3 32 32s-14.3 32-32 32h-8c-30.9 0-56 25.1-56 56v8h64c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V320 288 216zm256 0c0-66.3 53.7-120 120-120h8c17.7 0 32 14.3 32 32s-14.3 32-32 32h-8c-30.9 0-56 25.1-56 56v8h64c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64H320c-35.3 0-64-28.7-64-64V320 288 216z" /></svg>
+
+            <p style={{ color: "var(--lightFadedColor)", fontSize: "var(--h2FontSize)", fontFamily: "roboto" }}>{testimonials[0].testimonial}</p>
+          </div>
+
+          <div style={{ flex: "1 1 300px", color: "#fff", paddingInline: "1rem" }}>
+            <p style={{ fontSize: "var(--h2FontSize)" }}>- {testimonials[0].name}</p>
+
+            <p style={{ color: "var(--lightFadedColor)", maxWidth: "30ch" }}>{testimonials[0].jobTitle}</p>
+
+            <Link href={""} style={{ marginBlock: "2rem", display: "inline-block", color: "var(--fadedColor)" }}>More Testimonials</Link>
+          </div>
         </div>
       </section>
     </main>

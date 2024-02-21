@@ -7,7 +7,7 @@ export default function TopNotifs() {
         <div style={{ display: "flex", flexWrap: "wrap", padding: "1rem", backgroundColor: "var(--backgroundColor)", alignItems: "center" }}>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
                 <p className='highlight'>850-855-2125</p>
-                <p>Available 24/7/365</p>
+                <p style={{ color: "var(--lightFadedColor)" }}>Available 24/7/365</p>
             </div>
 
             <div style={{ display: "flex", flex: 1, justifyContent: "flex-end", gap: ".5rem" }}>

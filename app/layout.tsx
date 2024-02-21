@@ -5,6 +5,7 @@ import TopNotifs from "@/components/topnotifs/TopNotifs";
 import Logo from "@/components/logo/Logo";
 import Navbar from "@/components/navbar/Navbar";
 import AtomLoader from "@/components/AtomLoader";
+import Footer from "@/components/footer/Footer";
 
 const lato = Lato({ subsets: ["latin"], weight: ["100", "400", "700"] });
 
@@ -28,7 +29,10 @@ export default function RootLayout({
           <Logo />
           <Navbar />
         </div>
+
         {children}
+
+        <Footer />
       </body>
     </html>
   );
