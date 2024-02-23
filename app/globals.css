@@ -53,6 +53,7 @@ svg:hover {
 
 h1 {
   font-size: var(--h1FontSize);
+  font-weight: 300;
 }
 
 h2 {
@@ -62,6 +63,7 @@ h2 {
 
 p {
   line-height: 29px;
+  font-weight: 300;
 }
 
 button {
@@ -72,6 +74,7 @@ button {
   background-color: var(--primaryColor);
   align-items: center;
   color: #000;
+  font-weight: 300;
 }
 
 button svg {

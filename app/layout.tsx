@@ -7,7 +7,7 @@ import Navbar from "@/components/navbar/Navbar";
 import AtomLoader from "@/components/AtomLoader";
 import Footer from "@/components/footer/Footer";
 
-const lato = Lato({ subsets: ["latin"], weight: ["100", "400", "700"] });
+const lato = Lato({ subsets: ["latin"], weight: ["300", "400", "700"] });
 
 export const metadata: Metadata = {
   title: "The Source",

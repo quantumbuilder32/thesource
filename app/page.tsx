@@ -11,7 +11,7 @@ export default function Home() {
       <section style={{ backgroundColor: "var(--primaryColor)", color: "#fff", paddingBlock: "5rem" }}>
         <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
           <div style={{ flex: "1 1 300px" }}>
-            <h1>Why The Source?</h1>
+            <h1 style={{ marginBottom: "1rem", textAlign: "center" }}>Why The Source?</h1>
             <p>At The Source, we take pride in being your trusted partner for all your property maintenance needs. With years of experience in the industry, our team of skilled professionals is committed to delivering exceptional service and quality workmanship.</p>
           </div>
 
@@ -19,7 +19,7 @@ export default function Home() {
         </div>
       </section>
 
-      <h2 style={{ aspectRatio: "1/1", padding: "2rem", borderRadius: "50%", backgroundColor: "#000", position: "absolute", left: "50%", translate: "-50% -50%", display: "grid", alignItems: "center", justifyItems: "center", color: "#fff", zIndex: 2, textAlign: "center" }}>WE HELP</h2>
+      <p style={{ aspectRatio: "1/1", padding: "1.5rem", borderRadius: "50%", backgroundColor: "#000", position: "absolute", left: "50%", translate: "-50% -50%", display: "grid", alignItems: "center", justifyItems: "center", color: "#fff", zIndex: 2, textAlign: "center", fontSize: "1.5rem", fontWeight: "300" }}>WE HELP</p>
 
       <section>
         <div style={{ display: "grid", gridAutoFlow: "column", gridAutoColumns: "min(350px, 95%)", gap: "1rem", overflowX: "auto", scrollSnapType: "x mandatory" }}>
@@ -51,7 +51,7 @@ export default function Home() {
             },
           ].map((eachItem, eachItemIndex) => {
             return (
-              <div key={eachItemIndex} style={{ color: "#fff", display: "grid", gridTemplateRows: "1.3fr 1fr", scrollSnapAlign: "start" }}>
+              <div key={eachItemIndex} style={{ color: "#fff", display: "grid", gridTemplateRows: "1.3fr 1fr", scrollSnapAlign: "start", fontWeight: "300" }}>
                 <div style={{ position: "relative", display: "grid", alignItems: "center", justifyItems: "center" }}>
                   <Image className="hoverHighlight" alt={`${eachItem.title}image`} src={eachItem.img} height={400} width={400} style={{ objectFit: "cover", position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }} />
 

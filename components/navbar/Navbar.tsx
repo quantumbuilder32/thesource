@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useAtom } from 'jotai'
 import { screenSizeGlobal } from '@/utility/globalState'
 import { menuItem, navItemsArr } from '@/lib/data/navbardata'
+import { usePathname } from 'next/navigation'
 
 
 export default function Navbar({ menuItemArr = navItemsArr }: { menuItemArr?: menuItem[] }) {
@@ -47,18 +48,21 @@ export default function Navbar({ menuItemArr = navItemsArr }: { menuItemArr?: me
 
 function MenuItem({ eachMenuItem }: { eachMenuItem: menuItem }) {
     const [subMenuShowing, subMenuShowingSet] = useState(false)
+    const pathname = usePathname()
 
     return (
         <li className={styles.menuItem}>
-            <div className={styles.chevronCont} style={{ display: "flex", flexWrap: "wrap", gap: ".5rem", alignItems: "center", padding: "1rem", cursor: "pointer" }} onClick={() => {
+            <div className={styles.chevronCont} style={{ display: "flex", flexWrap: "wrap", gap: ".5rem", alignItems: "center", padding: "1.7rem 1rem", cursor: "pointer", borderBottom: pathname === eachMenuItem.link ? "2px solid var(--primaryColor)" : "" }} onClick={() => {
                 subMenuShowingSet(prev => !prev)
             }}>
-                <Link href={eachMenuItem.link}>
+                <Link href={eachMenuItem.link} style={{ textTransform: "uppercase", fontWeight: "100" }}>
                     {eachMenuItem.title}
                 </Link>
 
                 {eachMenuItem.subMenu && (
-                    <svg style={{ rotate: subMenuShowing ? "180deg" : "" }} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" /></svg>
+                    <svg style={{ rotate: subMenuShowing ? "180deg" : "", width: ".5rem" }} viewBox="0 0 96 96">
+                        <path d="M0.561,20.971l45.951,57.605c0.76,0.951,2.367,0.951,3.127,0l45.956-57.609c0.547-0.689,0.709-1.716,0.414-2.61   c-0.061-0.187-0.129-0.33-0.186-0.437c-0.351-0.65-1.025-1.056-1.765-1.056H2.093c-0.736,0-1.414,0.405-1.762,1.056   c-0.059,0.109-0.127,0.253-0.184,0.426C-0.15,19.251,0.011,20.28,0.561,20.971z" />
+                    </svg>
                 )}
             </div>
 
