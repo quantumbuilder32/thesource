@@ -5,11 +5,10 @@
 :root {
   --primaryColor: #e0a90e;
   --secondaryColor: orange;
-  --backgroundColor: #2d2d2d;
+  --backgroundColor: #232323;
   --fadedColor: #565656;
   --lightFadedColor: #707070;
-
-  --h1FontSize: 2.5rem;
+  --h1FontSize: 2rem;
   --h2FontSize: 1.2rem;
   --smallFontSize: .7rem;
 }

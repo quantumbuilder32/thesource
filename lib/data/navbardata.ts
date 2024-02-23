@@ -24,11 +24,10 @@ export const navItemsArr: menuItem[] = [
         link: "/services",
         subMenu: [
             {
-                link: "", title: "Overview", id: 1,
-
+                link: "/services", title: "Overview", id: 1,
             },
             {
-                link: "", title: "Maintenance", id: 2,
+                link: "/maintenance", title: "Maintenance", id: 2,
 
             },
             {
@@ -57,7 +56,7 @@ export const navItemsArr: menuItem[] = [
         link: "/company",
         subMenu: [
             {
-                link: "", title: "Overview", id: 1,
+                link: "/company", title: "Overview", id: 1,
 
             },
             {

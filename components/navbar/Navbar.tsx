@@ -52,12 +52,22 @@ function MenuItem({ eachMenuItem }: { eachMenuItem: menuItem }) {
 
     return (
         <li className={styles.menuItem}>
-            <div className={styles.chevronCont} style={{ display: "flex", flexWrap: "wrap", gap: ".5rem", alignItems: "center", padding: "1.7rem 1rem", cursor: "pointer", borderBottom: pathname === eachMenuItem.link ? "2px solid var(--primaryColor)" : "" }} onClick={() => {
+            <div className={styles.chevronCont} style={{ display: "flex", flexWrap: "wrap", gap: ".5rem", alignItems: "center", padding: "1.25rem 1rem", cursor: "pointer", borderBottom: pathname === eachMenuItem.link ? "2px solid var(--primaryColor)" : "", textTransform: "uppercase", fontWeight: "100" }} onClick={() => {
                 subMenuShowingSet(prev => !prev)
             }}>
-                <Link href={eachMenuItem.link} style={{ textTransform: "uppercase", fontWeight: "100" }}>
-                    {eachMenuItem.title}
-                </Link>
+                {eachMenuItem.subMenu ? (
+                    <>
+                        <p style={{}}>
+                            {eachMenuItem.title}
+                        </p>
+                    </>
+                ) : (
+                    <>
+                        <Link href={eachMenuItem.link} style={{}}>
+                            {eachMenuItem.title}
+                        </Link>
+                    </>
+                )}
 
                 {eachMenuItem.subMenu && (
                     <svg style={{ rotate: subMenuShowing ? "180deg" : "", width: ".5rem" }} viewBox="0 0 96 96">
@@ -67,10 +77,10 @@ function MenuItem({ eachMenuItem }: { eachMenuItem: menuItem }) {
             </div>
 
             {eachMenuItem.subMenu && subMenuShowing && (
-                <ul className={styles.subMenuCont}>
+                <ul className={styles.subMenuCont} onClick={() => subMenuShowingSet(false)}>
                     {eachMenuItem.subMenu.map((eachSubMenuItem) => {
                         return (
-                            <li key={eachSubMenuItem.id} className={styles.subMenuItem}>
+                            <li key={eachSubMenuItem.id} className={styles.subMenuItem} style={{ borderBottom: pathname === eachSubMenuItem.link ? "2px solid var(--primaryColor)" : "", }}>
                                 <Link href={eachSubMenuItem.link}>
                                     {eachSubMenuItem.title}
                                 </Link>
