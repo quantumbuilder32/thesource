@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React, { useEffect, useRef, useState } from 'react'
 import styles from "./imagecarousel.module.css"
-import MainButton from '../reusables/buttons/MainButton'
+import MainButton from '../reusables/buttons/mainbutton/MainButton'
 
 export default function ImageCarousel() {
     const [activeIndex, activeIndexSet] = useState(0)

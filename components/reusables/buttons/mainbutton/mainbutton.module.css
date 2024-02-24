@@ -1,0 +1,14 @@
+.button {
+    display: flex;
+    padding: 1rem 2rem;
+    gap: .5rem;
+    border-radius: .5rem;
+    background-color: var(--primaryColor);
+    align-items: center;
+    color: #000;
+    font-weight: 300;
+}
+
+.button svg {
+    fill: #000
+}
