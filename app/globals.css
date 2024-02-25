@@ -36,12 +36,11 @@ body {
 svg {
   width: 1rem;
   aspect-ratio: 1/1;
-  fill: #fff;
+  fill: #000;
   transition: fill 600ms, scale 600ms, rotate 400ms;
 }
 
 svg:hover {
-  fill: #fff;
   scale: 1.1;
 }
 

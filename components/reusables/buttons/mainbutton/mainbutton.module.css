@@ -4,11 +4,23 @@
     gap: .5rem;
     border-radius: .5rem;
     background-color: var(--primaryColor);
+    transition: background-color 600ms, color 600ms;
     align-items: center;
     color: #000;
     font-weight: 300;
 }
 
 .button svg {
-    fill: #000
+    fill: #000;
+    transition: fill 600ms;
+
+}
+
+.button:hover {
+    background-color: #000;
+    color: #fff
+}
+
+.button:hover svg {
+    fill: #fff
 }

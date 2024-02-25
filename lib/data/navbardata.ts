@@ -27,16 +27,13 @@ export const navItemsArr: menuItem[] = [
                 link: "/services", title: "Overview", id: 1,
             },
             {
-                link: "/maintenance", title: "Maintenance", id: 2,
-
+                link: "/services/maintenance", title: "Maintenance", id: 2,
             },
             {
-                link: "", title: "Custodial", id: 3,
-
+                link: "/services/custodial", title: "Custodial", id: 3,
             },
             {
-                link: "", title: "Management", id: 4,
-
+                link: "/services/management", title: "Management", id: 4,
             },
         ],
         id: 1,
