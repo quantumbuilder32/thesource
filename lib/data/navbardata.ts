@@ -39,8 +39,8 @@ export const navItemsArr: menuItem[] = [
         id: 1,
     },
     {
-        title: "About Us",
-        link: "/aboutUs",
+        title: "Meet The Team",
+        link: "/meetTheTeam",
         id: 2,
     },
     {

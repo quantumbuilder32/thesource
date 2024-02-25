@@ -5,6 +5,7 @@
     white-space: nowrap;
     display: grid;
     align-content: flex-start;
+    animation: fadeIn 1s 1500ms both;
 }
 
 .nav svg {
@@ -57,6 +58,17 @@
 
     .subMenuCont {
         position: relative;
+    }
+
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
     }
 
 }

@@ -24,7 +24,7 @@ export default function RootLayout({
       <body className={lato.className}>
         <AtomLoader />
 
-        <div style={{ backgroundColor: "#000" }}>
+        <div style={{ backgroundColor: "#000", display: "grid" }}>
           <TopNotifs />
           <Logo />
           <Navbar />

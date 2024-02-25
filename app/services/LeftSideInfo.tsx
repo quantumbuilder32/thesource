@@ -6,7 +6,7 @@ import React from 'react'
 
 export default function LeftSideInfo() {
     const pathname = usePathname()
-    console.log(`$pathname`, pathname);
+
     return (
         <div style={{ flex: "1 1 auto", display: "grid", alignContent: "flex-start", gap: "1rem", justifyItems: "center", padding: "1rem" }}>
             <p style={{ fontSize: "var(--h2FontSize)", maxWidth: "200px", textAlign: "center" }}><span style={{ fontWeight: "bold" }}>We&apos;re Ready.</span> Talk with an expert today!</p>
