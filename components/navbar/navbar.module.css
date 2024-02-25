@@ -26,6 +26,14 @@
     position: relative;
 }
 
+.chevronCont {
+    border: 2px solid transparent
+}
+
+.chevronCont:hover {
+    border-bottom: 2px solid var(--primaryColor)
+}
+
 
 .subMenuCont {
     position: absolute;
@@ -35,10 +43,12 @@
 .subMenuItem {
     padding: 1rem;
     transition: filter 400ms;
+    border: 2px solid transparent
 }
 
 .subMenuItem:hover {
     filter: brightness(.6);
+    border-bottom: 2px solid var(--primaryColor)
 }
 
 
