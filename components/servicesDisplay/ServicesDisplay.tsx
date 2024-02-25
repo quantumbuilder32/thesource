@@ -12,7 +12,7 @@ export default function ServicesDisplay({ services }: { services: serviceType[] 
             <div style={{ display: "flex", overflowX: "auto" }}>
                 {services.map((eachService, eachServiceIndex) => {
                     return (
-                        <div onClick={() => currentIndexSet(eachServiceIndex)} style={{ backgroundColor: currentIndex === eachServiceIndex ? "var(--primaryColor)" : "", display: "grid", gap: "1rem", color: "#fff", whiteSpace: "nowrap", borderRight: "1px solid #fff", borderTop: "1px solid #fff" }} className={styles.tabCont}>
+                        <div key={eachServiceIndex} onClick={() => currentIndexSet(eachServiceIndex)} style={{ backgroundColor: currentIndex === eachServiceIndex ? "var(--primaryColor)" : "", display: "grid", gap: "1rem", color: "#fff", whiteSpace: "nowrap", borderRight: "1px solid #fff", borderTop: "1px solid #fff" }} className={styles.tabCont}>
                             {eachService.svg}
 
                             <p>{eachService.name}</p>

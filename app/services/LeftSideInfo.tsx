@@ -9,7 +9,7 @@ export default function LeftSideInfo() {
     console.log(`$pathname`, pathname);
     return (
         <div style={{ flex: "1 1 auto", display: "grid", alignContent: "flex-start", gap: "1rem", justifyItems: "center", padding: "1rem" }}>
-            <p style={{ fontSize: "var(--h2FontSize)", maxWidth: "200px", textAlign: "center" }}><span style={{ fontWeight: "bold" }}>We're Ready.</span> Talk with an expert today!</p>
+            <p style={{ fontSize: "var(--h2FontSize)", maxWidth: "200px", textAlign: "center" }}><span style={{ fontWeight: "bold" }}>We&apos;re Ready.</span> Talk with an expert today!</p>
 
             <MainButton link='/contactUs' text='Contact Us' />
 
