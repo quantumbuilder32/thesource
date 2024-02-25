@@ -21,7 +21,13 @@ export default function ServicesDisplay({ services }: { services: serviceType[] 
                 })}
             </div>
 
-            <Image alt={`${services[currentIndex].name}' image`} src={services[currentIndex].image} height={500} width={500} style={{ objectFit: "cover", width: "100%", height: "400px" }} />
+            {services.map((eachService, eachServiceIndex) => {
+                const currentlySelected = currentIndex === eachServiceIndex
+
+                return (
+                    <Image key={eachServiceIndex} priority={currentlySelected} alt={`${eachService.name}' image`} src={eachService.image} height={500} width={500} style={{ objectFit: "cover", width: "100%", height: "400px", display: !currentlySelected ? "none" : "" }} />
+                )
+            })}
 
             {services[currentIndex].supportedTextCont}
         </div>
