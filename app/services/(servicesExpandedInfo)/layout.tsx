@@ -32,7 +32,7 @@ export const allServicesData: { [key: string]: serviceType[] } = {
     {
       name: "Pressure Washing",
       image: "https://www.halorestorationservices.com/wp-content/uploads/2019/08/pressure-washing-pavestone.jpg",
-      supportedTextCont: <div><p>Restore the appearance of your property's exterior surfaces with our professional pressure washing services. From sidewalks and driveways to siding and fences, we remove dirt, grime, and stains, leaving your property looking fresh and revitalized.</p></div>,
+      supportedTextCont: <div><p>Restore the appearance of your property&apos;s exterior surfaces with our professional pressure washing services. From sidewalks and driveways to siding and fences, we remove dirt, grime, and stains, leaving your property looking fresh and revitalized.</p></div>,
       svg: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M288 96c0-17.7 14.3-32 32-32s32 14.3 32 32s14.3 32 32 32s32-14.3 32-32c0-53-43-96-96-96s-96 43-96 96V288H160V264c0-30.9-25.1-56-56-56H56c-13.3 0-24 10.7-24 24s10.7 24 24 24h48c4.4 0 8 3.6 8 8v24H32c-17.7 0-32 14.3-32 32s14.3 32 32 32H256 480c17.7 0 32-14.3 32-32s-14.3-32-32-32H400V264c0-4.4 3.6-8 8-8h56c13.3 0 24-10.7 24-24s-10.7-24-24-24H408c-30.9 0-56 25.1-56 56v24H288V96zM480 416V384H32v32c0 53 43 96 96 96H384c53 0 96-43 96-96z" /></svg>
     },
   ],
@@ -51,7 +51,7 @@ export const allServicesData: { [key: string]: serviceType[] } = {
       image: "https://img.freepik.com/free-photo/adult-male-with-face-mask-cleaning-home_23-2148563563.jpg?t=st=1708845306~exp=1708848906~hmac=bffcdacc7d25384d14e0137ec1835e80f5e578ff13cee26bced5c8008f7b245f&w=826",
       supportedTextCont:
         <div>
-          <p>Our indoor cleaning services extend beyond residential properties to include commercial spaces, offices, and more. Whether it's routine maintenance or deep cleaning, we tailor our services to meet the unique needs of each space, leaving it spotless and inviting.</p>
+          <p>Our indoor cleaning services extend beyond residential properties to include commercial spaces, offices, and more. Whether it&apos;s routine maintenance or deep cleaning, we tailor our services to meet the unique needs of each space, leaving it spotless and inviting.</p>
         </div>,
       svg: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M96 77.3c0-7.3 5.9-13.3 13.3-13.3c3.5 0 6.9 1.4 9.4 3.9l14.9 14.9C130 91.8 128 101.7 128 112c0 19.9 7.2 38 19.2 52c-5.3 9.2-4 21.1 3.8 29c9.4 9.4 24.6 9.4 33.9 0L289 89c9.4-9.4 9.4-24.6 0-33.9c-7.9-7.9-19.8-9.1-29-3.8C246 39.2 227.9 32 208 32c-10.3 0-20.2 2-29.2 5.5L163.9 22.6C149.4 8.1 129.7 0 109.3 0C66.6 0 32 34.6 32 77.3V256c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H96V77.3zM32 352v16c0 28.4 12.4 54 32 71.6V480c0 17.7 14.3 32 32 32s32-14.3 32-32V464H384v16c0 17.7 14.3 32 32 32s32-14.3 32-32V439.6c19.6-17.6 32-43.1 32-71.6V352H32z" /></svg>
     }
@@ -91,7 +91,7 @@ export const whyChooseUsData: { [key: string]: whyChooseUsType } = {
   },
   "custodial": {
     catchPhrase: "Discover the Difference: Opt for The Source's Custodial Services!",
-    reasons: [<p key={1}>Our team of cleaning professionals is trained, experienced, and committed to delivering exceptional results.</p>, <p key={2}>We offer flexible scheduling options to accommodate your needs, whether it's a one-time cleaning or regular maintenance.</p>, <p key={3}>We use safe and effective cleaning products and techniques to protect indoor air quality and ensure a healthy environment.</p>, <p key={4}>We tailor our cleaning services to meet your specific preferences and requirements, ensuring your complete satisfaction.</p>, <p key={5}>We believe in transparent communication and strive to keep you informed every step of the way, from booking your service to completion.</p>],
+    reasons: [<p key={1}>Our team of cleaning professionals is trained, experienced, and committed to delivering exceptional results.</p>, <p key={2}>We offer flexible scheduling options to accommodate your needs, whether it&apos;s a one-time cleaning or regular maintenance.</p>, <p key={3}>We use safe and effective cleaning products and techniques to protect indoor air quality and ensure a healthy environment.</p>, <p key={4}>We tailor our cleaning services to meet your specific preferences and requirements, ensuring your complete satisfaction.</p>, <p key={5}>We believe in transparent communication and strive to keep you informed every step of the way, from booking your service to completion.</p>],
     summary: "At The Source, we provide comprehensive custodial services to maintain a clean and healthy indoor environment. From house cleaning to office maintenance, we ensure that every space is spotless and inviting."
   },
   "management": {
