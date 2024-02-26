@@ -35,6 +35,9 @@ export const navItemsArr: menuItem[] = [
             {
                 link: "/services/management", title: "Management", id: 4,
             },
+            {
+                link: "/services/propertySolutions", title: "Property Solutions", id: 5,
+            },
         ],
         id: 1,
     },
@@ -50,18 +53,14 @@ export const navItemsArr: menuItem[] = [
     },
     {
         title: "Company",
-        link: "/company",
+        link: "/mission",
         subMenu: [
             {
-                link: "/company", title: "Overview", id: 1,
+                link: "/mission", title: "Mission", id: 1,
 
             },
             {
-                link: "", title: "Mission", id: 2,
-
-            },
-            {
-                link: "", title: "Testimonials", id: 3,
+                link: "/testimonials", title: "Testimonials", id: 2,
             }
         ],
         id: 4,

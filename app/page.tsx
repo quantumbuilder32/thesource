@@ -15,11 +15,11 @@ export default function Home() {
             <p>At The Source, we take pride in being your trusted partner for all your property maintenance needs. With years of experience in the industry, our team of skilled professionals is committed to delivering exceptional service and quality workmanship.</p>
           </div>
 
-          <p style={{ flex: "1 1 300px" }}>Whether it&apos;s fixing, painting, or cleaning, we approach every project with dedication and attention to detail. We prioritize customer satisfaction above all else, ensuring that your property is well-maintained and exceeds your expectations. Choose The Source for reliable, efficient, and cost-effective maintenance solutions that you can trust.</p>
+          <p style={{ flex: "1 1 300px" }}>Whether it&apos;s fixing, cleaning or management, we approach every project with dedication and attention to detail. We prioritize customer satisfaction above all else, ensuring that your property is well-maintained and exceeds your expectations. Choose The Source for reliable, efficient, and cost-effective maintenance solutions that you can trust.</p>
         </div>
       </section>
 
-      <p style={{ aspectRatio: "1/1", padding: "1.5rem", borderRadius: "50%", backgroundColor: "#000", position: "absolute", left: "50%", translate: "-50% -50%", display: "grid", alignItems: "center", justifyItems: "center", color: "#fff", zIndex: 2, textAlign: "center", fontSize: "1.5rem", fontWeight: "300" }}>WE HELP</p>
+      <p style={{ aspectRatio: "1/1", padding: "2rem", borderRadius: "50%", backgroundColor: "#000", position: "absolute", left: "50%", translate: "-50% -50%", display: "grid", alignItems: "center", justifyItems: "center", color: "#fff", zIndex: 2, textAlign: "center", fontSize: "1.5rem", lineHeight: "2rem" }}>HERE TO <br />ASSIST</p>
 
       <section>
         <div style={{ display: "grid", gridAutoFlow: "column", gridAutoColumns: "min(350px, 95%)", gap: "1rem", overflowX: "auto", scrollSnapType: "x mandatory" }}>

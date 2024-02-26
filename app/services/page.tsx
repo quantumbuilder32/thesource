@@ -35,6 +35,12 @@ export default function Page() {
                             title: "Management",
                             img: "https://cdn.pixabay.com/photo/2017/03/28/12/11/chairs-2181960_1280.jpg",
                             summary: "Our management services provide comprehensive solutions for property management needs. From CAM services to office management, we ensure smooth operations and tenant satisfaction."
+                        },
+                        {
+                            link: "/services/propertySolutions",
+                            title: "Property Solutions",
+                            img: "https://images.unsplash.com/photo-1611282712338-63a58e27980a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                            summary: "Discover comprehensive property solutions tailored to meet your needs. We provide expert solutions to keep your property in top condition and ensure tenant satisfaction."
                         }
                     ].map((eachItem, eachItemIndex) => {
                         return (

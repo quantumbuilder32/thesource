@@ -1,5 +1,6 @@
 "use client"
 import MainButton from '@/components/reusables/buttons/mainbutton/MainButton'
+import { navItemsArr } from '@/lib/data/navbardata'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import React from 'react'
@@ -14,23 +15,10 @@ export default function LeftSideInfo() {
             <MainButton link='/contactUs' text='Contact Us' />
 
             <ul style={{ border: "1px solid var(--lightFadedColor)", padding: "1rem 2rem" }}>
-                {[
-                    {
-                        name: "Maintenance",
-                        link: "/services/maintenance",
-                    },
-                    {
-                        name: "Custodial",
-                        link: "/services/custodial",
-                    },
-                    {
-                        name: "Management",
-                        link: "/services/management",
-                    },
-                ].map((eachServiceLink, eachServiceLinkIndex) => {
+                {navItemsArr[0].subMenu!.map((eachServiceLink, eachServiceLinkIndex) => {
                     return (
                         <li key={eachServiceLinkIndex} style={{ padding: "1rem", borderBottom: pathname === eachServiceLink.link ? "2px solid var(--secondaryColor)" : "2px solid transparent", color: pathname === eachServiceLink.link ? "var(--secondaryColor)" : "" }}>
-                            <Link href={eachServiceLink.link}>{eachServiceLink.name}</Link>
+                            <Link href={eachServiceLink.link}>{eachServiceLink.title}</Link>
                         </li>
                     )
                 })}

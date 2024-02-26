@@ -52,22 +52,10 @@ function MenuItem({ eachMenuItem }: { eachMenuItem: menuItem }) {
 
     return (
         <li className={styles.menuItem}>
-            <div className={styles.chevronCont} style={{ display: "flex", flexWrap: "wrap", gap: ".5rem", alignItems: "center", padding: "1.25rem 1rem", cursor: "pointer", borderBottom: pathname === eachMenuItem.link ? "2px solid var(--primaryColor)" : "", textTransform: "uppercase", fontWeight: "100" }} onClick={() => {
+            <div className={styles.chevronCont} style={{ display: "flex", flexWrap: "wrap", gap: ".5rem", alignItems: "center", padding: "1.25rem 1rem", cursor: "pointer", textTransform: "uppercase", fontWeight: "100", }} onClick={() => {
                 subMenuShowingSet(prev => !prev)
             }}>
-                {eachMenuItem.subMenu ? (
-                    <>
-                        <p style={{}}>
-                            {eachMenuItem.title}
-                        </p>
-                    </>
-                ) : (
-                    <>
-                        <Link href={eachMenuItem.link} style={{}}>
-                            {eachMenuItem.title}
-                        </Link>
-                    </>
-                )}
+                {eachMenuItem.subMenu ? <p>{eachMenuItem.title}</p> : <Link href={eachMenuItem.link}>{eachMenuItem.title}</Link>}
 
                 {eachMenuItem.subMenu && (
                     <svg style={{ rotate: subMenuShowing ? "180deg" : "", width: ".5rem" }} viewBox="0 0 96 96">

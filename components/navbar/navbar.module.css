@@ -8,6 +8,10 @@
     animation: fadeIn 1s 1500ms both;
 }
 
+.nav p {
+    line-height: 1.5rem;
+}
+
 .nav svg {
     fill: #fff;
 }
@@ -27,7 +31,7 @@
 }
 
 .chevronCont {
-    border: 2px solid transparent
+    border-bottom: 2px solid transparent
 }
 
 .chevronCont:hover {

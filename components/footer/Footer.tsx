@@ -2,14 +2,18 @@ import React from 'react'
 import styles from "./footer.module.css"
 import { navItemsArr } from '@/lib/data/navbardata'
 import Link from 'next/link'
+import { businessInfo } from '../generalInfo/GeneralInfo'
 
 export default function Footer() {
     return (
-        <footer style={{ backgroundColor: "#000", padding: "5rem 2rem", fontSize: "var(--smallFontSize)" }}>
+        <footer style={{ backgroundColor: "#000", padding: "5rem 2rem" }}>
             <div className={styles.footerNav} style={{ display: "grid", gap: "1rem", maxWidth: "900px", margin: "0 auto", gridTemplateColumns: "repeat(auto-fit, minmax(min(200px, 100%), 1fr)" }}>
                 <div>
                     <h2>what we do</h2>
+
                     <p>At The Source, we specialize in providing comprehensive property maintenance services for homeowners, businesses, property managers, and facilities managers.</p>
+
+                    <p style={{ marginTop: "2rem", fontSize: "var(--smallFontSize)", color: "var(--secondaryColor)", textAlign: "center" }}>Exceeding Expectación, Every Service,  Every Time</p>
                 </div>
 
                 <div>
@@ -32,7 +36,7 @@ export default function Footer() {
                     <h2>contact</h2>
 
                     <div style={{ margin: "1rem auto", fontSize: "var(--h2FontSize)", display: "grid", justifyItems: "center" }}>
-                        <p style={{ color: "var(--primaryColor)" }}>850-855-2125</p>
+                        <p style={{ color: "var(--primaryColor)" }}>{businessInfo.phone}</p>
                         <p>Get Help Now</p>
                         <div style={{ aspectRatio: "1/1", width: "2.5rem", backgroundColor: "var(--primaryColor)", display: "grid", alignItems: "center", justifyItems: "center", borderRadius: "50%" }}>
                             <Link href={"/contactUs"}>
@@ -41,8 +45,7 @@ export default function Footer() {
                         </div>
                     </div>
 
-                    <p>8551 Pc Bch Pkwy Apt 5211
-                        P C Beach, FL 32407-4090</p>
+                    <p>{businessInfo.address}</p>
 
                     <p>Copyright © 2024 The Source All Rights Reserved.</p>
                 </div>
