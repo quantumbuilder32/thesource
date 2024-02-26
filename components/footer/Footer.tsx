@@ -2,7 +2,7 @@ import React from 'react'
 import styles from "./footer.module.css"
 import { navItemsArr } from '@/lib/data/navbardata'
 import Link from 'next/link'
-import { businessInfo } from '../generalInfo/GeneralInfo'
+import { generalInfo } from '../../lib/data/GeneralInfo'
 
 export default function Footer() {
     return (
@@ -36,7 +36,7 @@ export default function Footer() {
                     <h2>contact</h2>
 
                     <div style={{ margin: "1rem auto", fontSize: "var(--h2FontSize)", display: "grid", justifyItems: "center" }}>
-                        <p style={{ color: "var(--primaryColor)" }}>{businessInfo.phone}</p>
+                        <p style={{ color: "var(--primaryColor)" }}>{generalInfo.phone}</p>
                         <p>Get Help Now</p>
                         <div style={{ aspectRatio: "1/1", width: "2.5rem", backgroundColor: "var(--primaryColor)", display: "grid", alignItems: "center", justifyItems: "center", borderRadius: "50%" }}>
                             <Link href={"/contactUs"}>
@@ -45,7 +45,7 @@ export default function Footer() {
                         </div>
                     </div>
 
-                    <p>{businessInfo.address}</p>
+                    <p>{generalInfo.address}</p>
 
                     <p>Copyright © 2024 The Source All Rights Reserved.</p>
                 </div>
