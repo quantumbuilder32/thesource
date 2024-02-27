@@ -1,0 +1,10 @@
+.imageDiv {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    position: relative;
+}
+
+.imageDiv h1 {
+    margin-bottom: 1rem;
+}

@@ -5,7 +5,7 @@ import styles from "./secondaryButton.module.css"
 export default function SecondaryButton({ link, text }: { link: string, text: string }) {
     return (
         <Link href={link}>
-            <button className={styles.button}>{text}</button>
+            <button className={styles.button} style={{ color: "#fff" }}>{text}</button>
         </Link>
     )
 }

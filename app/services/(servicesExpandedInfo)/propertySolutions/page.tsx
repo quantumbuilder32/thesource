@@ -4,18 +4,26 @@ import { allServicesData, whyChooseUsData } from '../layout'
 import ServicesDisplay from '@/components/servicesDisplay/ServicesDisplay'
 import WhyChooseUs from '../WhyChooseUs'
 import SecondaryButton from '@/components/reusables/buttons/secondaryButton/SecondaryButton'
+import Image from 'next/image'
 
 export default function Page() {
     return (
         <main>
+            <section style={{ paddingBlock: "3rem", position: "relative", backgroundColor: "#0f0" }}>
+                <Image alt={`bgimage`} src="https://images.unsplash.com/photo-1560749003-f4b1e17e2dff?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" fill={true} style={{ flex: "1 1 300px", objectFit: "cover", top: 0, right: 0, height: "100%" }} />
+
+                <div style={{ position: "absolute", top: 0, left: 0, bottom: 0, right: 0, background: "linear-gradient(to right, var(--primaryColor), var(--primaryColor), transparent", }}></div>
+
+
+                <div style={{ position: "relative", zIndex: 1 }}>
+                    <h1>Property Solutions</h1>
+
+                    <p style={{ maxWidth: "75ch", }}>Whether you&apos;re a homeowner, business owner, or property manager, we have the expertise and resources to help you maintain and enhance your property.</p>
+                </div>
+            </section>
+
             <section >
-                <div style={{ display: "grid", gap: "1rem", maxWidth: "75ch" }}>
-                    <h1>Property solutions</h1>
-
-                    <p>
-                        Welcome to our Property Solutions page, where we offer a range of services to meet your property needs. Whether you&apos;re a homeowner, business owner, or property manager, we have the expertise and resources to help you maintain and enhance your property.
-                    </p>
-
+                <div style={{ display: "grid", gap: "1rem" }}>
                     <h2>Flexible Solutions for Every Need</h2>
 
                     <p>At The Source, we understand that every property is unique, and we offer flexible solutions tailored to your specific requirements. Whether you need routine maintenance, deep cleaning, or comprehensive property management, we&apos;ve got you covered.</p>

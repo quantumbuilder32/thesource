@@ -1,0 +1,13 @@
+.mainDiv {
+    display: grid;
+}
+
+.mainDiv * {
+    color: #000;
+}
+
+.mainDiv p {
+    max-width: 75ch;
+    color: #000;
+    margin-top: 1rem;
+}
