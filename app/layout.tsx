@@ -6,6 +6,7 @@ import Logo from "@/components/logo/Logo";
 import Navbar from "@/components/navbar/Navbar";
 import AtomLoader from "@/components/AtomLoader";
 import Footer from "@/components/footer/Footer";
+import { Toaster } from "react-hot-toast";
 
 const JuliusSansOne = Julius_Sans_One({ subsets: ["latin"], weight: ["400"] });
 const ArchivoNarrow = Archivo_Narrow({ subsets: ["latin"], weight: ["400", "700"] });
@@ -24,6 +25,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={ArchivoNarrow.className}>
         <AtomLoader />
+
+        <Toaster
+          position="top-center"
+          reverseOrder={false}
+        />
 
         <div style={{ backgroundColor: "#000", display: "grid" }}>
           <TopNotifs />

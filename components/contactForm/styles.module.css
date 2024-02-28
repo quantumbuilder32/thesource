@@ -1,0 +1,13 @@
+.formDiv {
+    color: #000;
+}
+
+.formColCont>div {
+    display: grid;
+    gap: 1rem;
+    align-content: flex-start;
+}
+
+.formColCont>div>div {
+    display: grid;
+}
