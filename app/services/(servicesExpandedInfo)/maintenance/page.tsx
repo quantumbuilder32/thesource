@@ -1,8 +1,9 @@
 import React from 'react'
 import styles from "./page.module.css"
-import { allServicesData, whyChooseUsData } from '../layout'
 import ServicesDisplay from '@/components/servicesDisplay/ServicesDisplay'
 import WhyChooseUs from '../WhyChooseUs'
+import { allServicesData } from '@/lib/data/servicesData'
+import { whyChooseUsData } from '../layout'
 
 export default function Page() {
     return (

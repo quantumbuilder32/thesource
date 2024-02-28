@@ -1,4 +1,8 @@
+import Faq from "@/components/FAQ/FAQ";
 import ImageCarousel from "@/components/imagecarousel/ImageCarousel";
+import SecondaryButton from "@/components/reusables/buttons/secondaryButton/SecondaryButton";
+import WhyChooseUs from "@/components/whyChooseUs/WhyChooseUs";
+import { allServicesData, servicesSummaryData } from "@/lib/data/servicesData";
 import { testimonials } from "@/lib/data/testimonials";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,21 +12,48 @@ export default function Home() {
     <main >
       <ImageCarousel />
 
-      <section style={{ backgroundColor: "var(--primaryColor)", color: "#fff", paddingBlock: "5rem" }}>
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
-          <div style={{ flex: "1 1 300px" }}>
-            <h1 style={{ marginBottom: "1rem", textAlign: "center" }}>Why The Source?</h1>
-            <p>At The Source, we take pride in being your trusted partner for all your property maintenance needs. With years of experience in the industry, our team of skilled professionals is committed to delivering exceptional service and quality workmanship.</p>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem", paddingBlock: "2rem" }}>
+        <div style={{ flex: "1 3 300px", position: "relative" }}>
+          <Image alt={`services intro image`} src={"https://images.pexels.com/photos/450064/pexels-photo-450064.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"} fill={true} style={{ objectFit: "cover" }} />
+
+          <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, background: "linear-gradient(to right, var(--primaryColor),var(--primaryColor), transparent)" }}></div>
+
+          <div style={{ position: "relative", zIndex: 1, display: "grid", gap: "1rem", padding: "1rem" }}>
+            <h2>Excepional</h2>
+            <h1>SERVICES WE OFFER</h1>
+            <p>We provide comprehensive property maintenance solutions tailored to meet your needs. From landscaping and custodial services to property management and pressure washing, our team ensures your property remains in top condition.</p>
+            <SecondaryButton link="/projectGallery" text="See Our Projects" />
           </div>
-
-          <p style={{ flex: "1 1 300px" }}>Whether it&apos;s fixing, cleaning or management, we approach every project with dedication and attention to detail. We prioritize customer satisfaction above all else, ensuring that your property is well-maintained and exceeds your expectations. Choose The Source for reliable, efficient, and cost-effective maintenance solutions that you can trust.</p>
         </div>
-      </section>
 
-      <p style={{ aspectRatio: "1/1", padding: "2rem", borderRadius: "50%", backgroundColor: "#000", position: "absolute", left: "50%", translate: "-50% -50%", display: "grid", alignItems: "center", justifyItems: "center", color: "#fff", zIndex: 2, textAlign: "center", fontSize: "1.5rem", lineHeight: "2rem" }}>HERE TO <br />ASSIST</p>
+        <div className="noScrollBar snap" style={{ flex: "5 1 300px", display: "grid", gridAutoFlow: "column", gridAutoColumns: "300px", overflowX: "auto", color: "#000", gap: "1rem" }}>
+          {servicesSummaryData.map((eachService, eachServiceIndex) => {
+            return (
+              <div key={eachServiceIndex} style={{ display: "flex", flexDirection: "column", gap: "1rem", alignContent: "flex-start", paddingInline: "1rem" }}>
+                <Image alt={`${eachService.title}image`} src={eachService.img} height={200} width={200} style={{ objectFit: "cover", aspectRatio: '1.5/1', width: "100%" }} />
+
+                <h2 style={{ textTransform: "uppercase" }}>{eachService.title}</h2>
+
+                <p>{eachService.summary}</p>
+
+                <SecondaryButton style={{ marginTop: "auto" }} link={eachService.link} text="View Details" />
+              </div>
+            )
+          })}
+
+        </div>
+      </div>
 
       <section>
-        <div style={{ display: "grid", gridAutoFlow: "column", gridAutoColumns: "min(350px, 95%)", gap: "1rem", overflowX: "auto", scrollSnapType: "x mandatory" }}>
+        <h1 style={{ textAlign: "center", color: "#000", marginBottom: "1rem" }}>Why Choose The Source</h1>
+
+        <WhyChooseUs />
+      </section>
+
+      <h1 style={{ textAlign: "center", color: "#000" }}>Here To Assist</h1>
+
+      <section>
+        <div className="snap" style={{ display: "grid", gridAutoFlow: "column", gridAutoColumns: "min(350px, 95%)", gap: "1rem", overflowX: "auto" }}>
           {[
             {
               title: "Homeowners",
@@ -51,7 +82,7 @@ export default function Home() {
             },
           ].map((eachItem, eachItemIndex) => {
             return (
-              <div key={eachItemIndex} style={{ color: "#fff", display: "grid", gridTemplateRows: "1.3fr 1fr", scrollSnapAlign: "start", fontWeight: "300" }}>
+              <div key={eachItemIndex} style={{ color: "#fff", display: "grid", gridTemplateRows: "1.3fr 1fr", fontWeight: "300" }}>
                 <div style={{ position: "relative", display: "grid", alignItems: "center", justifyItems: "center" }}>
                   <Image className="hoverHighlight" alt={`${eachItem.title}image`} src={eachItem.img} height={400} width={400} style={{ objectFit: "cover", position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }} />
 
@@ -64,6 +95,27 @@ export default function Home() {
               </div>
             )
           })}
+        </div>
+      </section>
+
+      <section>
+        <h1 style={{ textAlign: "center", color: "#000", marginBottom: "2rem" }}>Popular Questions</h1>
+        <div style={{ display: "grid", maxWidth: "75ch", margin: "0 auto", padding: "1rem", boxShadow: "0px 0px 40px 20px #eee" }}>
+          <Faq question="How often should I schedule maintenance for my property?"
+            answer="The frequency of maintenance depends on various factors such as the type of property, its age, and specific maintenance needs. As a general rule, we recommend scheduling routine maintenance at least once or twice a year to ensure your property remains in optimal condition. However, we can tailor a maintenance schedule to suit your property's unique requirements."
+          />
+
+          <Faq question="What services do you offer?"
+            answer="We offer a comprehensive range of property maintenance services, including landscaping, custodial services, property management, pressure washing, and more. Whether you need routine upkeep, repairs, or specialized services, our team is here to help keep your property looking its best."
+          />
+
+          <Faq question="How do I request a service or get a quote?"
+            answer="Requesting a service or obtaining a quote is easy! You can contact us through our website or give us a call to discuss your needs. Our friendly team will guide you through the process, gather necessary information, and provide you with a personalized quote based on your requirements."
+          />
+
+          <Faq question="Are your services customizable to my specific needs?"
+            answer="Yes, absolutely! We understand that every property is unique, and we offer customizable solutions to meet your specific needs and preferences. Whether you require a one-time service or ongoing maintenance, we'll work closely with you to tailor our services to your requirements and budget."
+          />
         </div>
       </section>
 

@@ -1,8 +1,5 @@
 import React from 'react'
 import styles from "./page.module.css"
-import { allServicesData, whyChooseUsData } from '../layout'
-import ServicesDisplay from '@/components/servicesDisplay/ServicesDisplay'
-import WhyChooseUs from '../WhyChooseUs'
 import SecondaryButton from '@/components/reusables/buttons/secondaryButton/SecondaryButton'
 import Image from 'next/image'
 

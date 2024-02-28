@@ -102,6 +102,10 @@ textarea:focus {
 }
 
 
+.noScrollBar::-webkit-scrollbar {
+  display: none;
+}
+
 
 /* custom classes */
 .hoverHighlight {
@@ -112,4 +116,12 @@ textarea:focus {
 
 .hoverHighlight:hover {
   filter: none;
+}
+
+.snap {
+  scroll-snap-type: x mandatory;
+}
+
+.snap>* {
+  scroll-snap-align: start;
 }

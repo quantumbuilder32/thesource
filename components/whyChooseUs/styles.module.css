@@ -1,0 +1,14 @@
+.elCont {}
+
+.elCont:hover {
+    background-color: var(--primaryColor);
+    color: #fff;
+}
+
+.elCont svg {
+    transition: fill 0ms;
+}
+
+.elCont:hover svg {
+    fill: #fff !important
+}

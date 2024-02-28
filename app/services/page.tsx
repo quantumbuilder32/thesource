@@ -5,6 +5,7 @@ import MainButton from '@/components/reusables/buttons/mainbutton/MainButton'
 import Image from 'next/image'
 import SecondaryButton from '@/components/reusables/buttons/secondaryButton/SecondaryButton'
 import LeftSideInfo from './LeftSideInfo'
+import { servicesSummaryData } from '@/lib/data/servicesData'
 
 export default function Page() {
     return (
@@ -17,32 +18,7 @@ export default function Page() {
                 <LeftSideInfo />
 
                 <div style={{ flex: "5 1 600px", display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(400px, 100%), 1fr))", gap: "1rem" }}>
-                    {[
-                        {
-                            link: "/services/maintenance",
-                            title: "Maintenance",
-                            img: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                            summary: "Our maintenance services cover a wide range of tasks to keep your property in top condition. From landscaping to pressure washing, we ensure every aspect of your property is well-maintained and pristine."
-                        },
-                        {
-                            link: "/services/custodial",
-                            title: "Custodial",
-                            img: "https://images.pexels.com/photos/7641008/pexels-photo-7641008.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-                            summary: "With our custodial services, we handle all indoor cleaning tasks with precision and care. From regular house cleaning to deep cleaning, we leave your interior spaces spotless and inviting."
-                        },
-                        {
-                            link: "/services/management",
-                            title: "Management",
-                            img: "https://cdn.pixabay.com/photo/2017/03/28/12/11/chairs-2181960_1280.jpg",
-                            summary: "Our management services provide comprehensive solutions for property management needs. From CAM services to office management, we ensure smooth operations and tenant satisfaction."
-                        },
-                        {
-                            link: "/services/propertySolutions",
-                            title: "Property Solutions",
-                            img: "https://images.unsplash.com/photo-1611282712338-63a58e27980a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                            summary: "Discover comprehensive property solutions tailored to meet your needs. We provide expert solutions to keep your property in top condition and ensure tenant satisfaction."
-                        }
-                    ].map((eachItem, eachItemIndex) => {
+                    {servicesSummaryData.map((eachItem, eachItemIndex) => {
                         return (
                             <div key={eachItemIndex}>
                                 <h1 style={{ fontWeight: "400", marginBottom: "1rem" }}>{eachItem.title}</h1>

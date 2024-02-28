@@ -62,7 +62,7 @@ export default function ImageCarousel() {
 
                         <p>{eachSlide.supportingText}</p>
 
-                        <MainButton link='' text={eachSlide.buttonText} />
+                        <MainButton link='/contactUs' text={eachSlide.buttonText} />
                     </div>
                 )
             })}
