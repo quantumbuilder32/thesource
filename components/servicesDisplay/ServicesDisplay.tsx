@@ -2,7 +2,7 @@
 import Image from 'next/image'
 import React, { useState } from 'react'
 import styles from "./style.module.css"
-import { serviceType } from '@/app/services/(servicesExpandedInfo)/layout'
+import { serviceType } from '@/lib/data/servicesData'
 
 export default function ServicesDisplay({ services }: { services: serviceType[] }) {
     const [currentIndex, currentIndexSet] = useState(0)
