@@ -1,6 +1,6 @@
 import React from 'react'
-import { whyChooseUsType } from './layout'
 import SecondaryButton from '@/components/reusables/buttons/secondaryButton/SecondaryButton'
+import { whyChooseUsType } from '@/lib/data/servicesData'
 
 export default function WhyChooseUs({ data }: { data: whyChooseUsType }) {
     return (
