@@ -13,7 +13,7 @@ export default function Footer() {
 
                     <p>At The Source, we specialize in providing comprehensive property maintenance services for homeowners, businesses, property managers, and facilities managers.</p>
 
-                    <p style={{ marginTop: "2rem", fontSize: "var(--smallFontSize)", color: "var(--secondaryColor)", textAlign: "center" }}>Exceeding Expectación, Every Service,  Every Time</p>
+                    <p style={{ marginTop: "2rem", fontSize: "var(--smallFontSize)", color: "var(--secondaryColor)", textAlign: "center" }}>Exceeding Expectation, Every Service,  Every Time</p>
                 </div>
 
                 <div>
