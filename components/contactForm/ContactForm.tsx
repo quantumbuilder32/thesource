@@ -2,20 +2,11 @@
 import React, { useState, FormEvent } from 'react'
 import styles from "./styles.module.css"
 import { toast } from 'react-hot-toast'
-import Z from "zod"
-import emailjs from "@emailjs/browser";
-import SecondaryButton from '../reusables/buttons/secondaryButton/SecondaryButton'
+import { sendEmail } from '@/serverFunctions/SendEmail'
+import { userForm, userFormSchema } from '@/components/EmailTemplate'
 
-const userFormSchema = Z.object({
-    name: Z.string().min(1),
-    email: Z.string().min(1),
-    company: Z.string().min(1).nullable(),
-    message: Z.string().min(1),
-})
 
 export default function ContactForm() {
-
-    type userForm = Z.infer<typeof userFormSchema>
 
     const initialForm: userForm = {
         name: "",
@@ -115,36 +106,21 @@ export default function ContactForm() {
 
     }
 
-    const handleSubmit = async (formSubmitEvent: FormEvent<HTMLFormElement>) => {
-        formSubmitEvent.preventDefault();
-        if (!userFormSchema.safeParse(formObj).success) return toast.error("Form not valid")
+    const handleSubmit = async () => {
+        try {
+            if (!userFormSchema.safeParse(formObj).success) return toast.error("Form not valid")
+            await sendEmail(formObj)
 
-        const seenFormEl = formSubmitEvent.target as HTMLFormElement
-
-        toast.success("working, but come back leter for setup")
-
-        return
-
-        const result = await emailjs
-            .sendForm(
-                `service_dfffusg`,
-                `template_n2m1arg`,
-                seenFormEl,
-                `rKzfrKZJI8d6o86V-`
-            )
-
-        if ((result.status >= 200 && result.status < 300) || result.text === "OK") {
-            console.log(`$success mans`, result);
             toast.success("Sent!")
             formObjSet({ ...initialForm })
-        } else {
+        } catch (error) {
             toast.error("Couldn't send")
-            console.log(`$seomething else happened`, result);
+            console.log(`$seomething else happened`, error);
         }
     }
 
     return (
-        <form method='POST' onSubmit={handleSubmit} className={styles.formDiv} style={{ display: "grid", alignContent: "flex-start" }}>
+        <form action={handleSubmit} className={styles.formDiv} style={{ display: "grid", alignContent: "flex-start" }}>
             <div className={styles.formColCont} style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(300px, 100%), 1fr))", gap: "1rem" }}>
                 <div>
                     <div>

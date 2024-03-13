@@ -10,12 +10,14 @@
   },
   "dependencies": {
     "@emailjs/browser": "^4.1.0",
+    "@react-email/components": "^0.0.15",
     "emailjs": "^4.0.3",
     "jotai": "^2.6.4",
     "next": "14.1.0",
     "react": "^18",
     "react-dom": "^18",
     "react-hot-toast": "^2.4.1",
+    "resend": "^3.2.0",
     "zod": "^3.22.4"
   },
   "devDependencies": {
