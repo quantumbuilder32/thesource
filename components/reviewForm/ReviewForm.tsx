@@ -2,9 +2,9 @@
 import React, { useState } from 'react'
 import styles from "./styles.module.css"
 import { toast } from 'react-hot-toast'
-import { newReviewForm, newReviewFormSchema } from '@/app/leaveAReview/page'
 import Image from 'next/image'
 import { saveTestimonial } from '@/serverFunctions/handleTestimonials'
+import { newReviewForm, newReviewFormSchema } from '@/types'
 
 
 export default function ReviewForm() {

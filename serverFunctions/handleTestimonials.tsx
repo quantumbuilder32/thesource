@@ -1,8 +1,9 @@
 "use server"
 import fs from "fs"
 import path from "path"
-import { newReviewForm, reviewForm } from "@/app/leaveAReview/page";
 import { checkIfFileExists, makeDirectory, readDataFromFile, saveDataToFile } from "./LocalFileStorage";
+import { newReviewForm, reviewForm } from "@/types";
+
 
 // Example usage
 const testimonialsDirectory = "./serverData";
