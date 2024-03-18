@@ -1,0 +1,21 @@
+.invoiceBody {
+    flex: 1 1 300px;
+    aspect-ratio: 17/22;
+    position: relative;
+    overflow: hidden;
+}
+
+.settingsCont {
+    max-width: 1000px;
+    background-color: yellow;
+    flex: 1 1 300px;
+}
+
+@media only screen and (max-width: 700px) {
+    .settingsCont {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: min(1000px, 100%);
+    }
+}
