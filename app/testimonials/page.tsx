@@ -1,11 +1,15 @@
-import GalleryDisplay from '@/components/galleryDisplay/GalleryDisplay'
 import DefaultImage from '@/components/reusables/DefaultImage';
 import { getTestimonials } from '@/serverFunctions/handleTestimonials';
 import Image from 'next/image';
 import React from 'react'
 
 export default async function Page() {
-    const testimonials = (await getTestimonials()).filter(eachTestimonial => eachTestimonial.accepted)
+    const testimonials = (await getTestimonials())
+        .filter(eachTestimonial => eachTestimonial.accepted)
+        .map(eachTestimonial => {
+            return { ...eachTestimonial, dateSubmitted: new Date(eachTestimonial.dateSubmitted) }
+        })
+        .sort((a, b) => - (b.dateSubmitted as any) - (a.dateSubmitted as any))
 
     return (
         <main>
