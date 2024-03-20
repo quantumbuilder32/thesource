@@ -3,6 +3,9 @@ import { getTestimonials } from '@/serverFunctions/handleTestimonials';
 import Image from 'next/image';
 import React from 'react'
 
+export const dynamic = 'force-dynamic'
+
+
 export default async function Page() {
     const testimonials = (await getTestimonials())
         .filter(eachTestimonial => eachTestimonial.accepted)
