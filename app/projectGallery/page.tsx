@@ -1,21 +1,50 @@
 import GalleryDisplay from '@/components/galleryDisplay/GalleryDisplay'
 import React from 'react'
-const projectImages = {
+import { galleryObj } from './imageGalleryType'
+
+const projectImages: {
+    maintenance: galleryObj[],
+    custodial: galleryObj[],
+    management: galleryObj[],
+} = {
     "maintenance": [
+        // {
+        //     collection: true,
+        //     before: [{
+        //         image: require(`@/public/maintenance/1.jpeg`).default.src,
+        //         title: '123 Main Street, Anytown',
+        //         summary: "Completed landscaping and garden maintenance."
+        //     },
+        //     {
+        //         image: require(`@/public/maintenance/2.jpeg`).default.src,
+        //         title: 'nautilus cove',
+        //         summary: "pressure washing."
+        //     },],
+        //     after: [{
+        //         image: require(`@/public/maintenance/1.jpeg`).default.src,
+        //         title: '123 Main Street, Anytown',
+        //         summary: "Completed landscaping and garden maintenance."
+        //     },
+        //     {
+        //         image: require(`@/public/maintenance/2.jpeg`).default.src,
+        //         title: 'nautilus cove',
+        //         summary: "pressure washing."
+        //     },]
+        // },
         {
             image: require(`@/public/maintenance/1.jpeg`).default.src,
-            title: '123 Main Street, Anytown',
-            summary: "Completed landscaping and garden maintenance."
+            title: 'nautilus cove',
+            summary: "Condo painting"
         },
         {
             image: require(`@/public/maintenance/2.jpeg`).default.src,
-            title: '456 Elm Street, Cityville',
-            summary: "Performed interior and exterior painting services."
+            title: 'nautilus cove',
+            summary: "pressure washing."
         },
         {
             image: require(`@/public/maintenance/3.jpeg`).default.src,
-            title: '789 Oak Avenue, Suburbia',
-            summary: "Provided comprehensive custodial services for the property."
+            title: 'nautilus cove',
+            summary: "pressure washing."
         },
         {
             image: require(`@/public/maintenance/4.jpeg`).default.src,
@@ -29,117 +58,109 @@ const projectImages = {
         },
         {
             image: require(`@/public/maintenance/6.jpeg`).default.src,
-            title: '333 Cedar Street, Urbania',
-            summary: "Performed interior and exterior painting services."
+            title: 'long beach resort',
+            summary: "pool maintenance."
         },
+        {
+            image: require(`@/public/custodial/3.jpeg`).default.src,
+            title: 'nautilus cove',
+            summary: "house cleaning."
+        },
+        {
+            image: require(`@/public/management/1.jpeg`).default.src,
+            title: 'nautilus cove',
+            summary: "painting."
+        },
+        {
+            image: require(`@/public/management/2.jpeg`).default.src,
+            title: 'nautilus cove',
+            summary: "maintenance."
+        },
+        {
+            image: require(`@/public/management/3.jpeg`).default.src,
+            title: 'nautilus cove',
+            summary: "maintenance."
+        },
+        {
+            image: require(`@/public/management/4.jpeg`).default.src,
+            title: 'nautilus cove',
+            summary: "maintenance."
+        },
+        {
+            image: require(`@/public/management/6.jpeg`).default.src,
+            title: 'long beach resort',
+            summary: "hotel maintenance."
+        },
+
     ],
     "custodial": [
         {
             image: require(`@/public/custodial/1.jpeg`).default.src,
-            title: '123 Main Street, Anytown',
-            summary: "Completed landscaping and garden maintenance."
+            title: 'nautilus cove',
+            summary: "pressure washing."
         },
         {
             image: require(`@/public/custodial/2.jpeg`).default.src,
-            title: '456 Elm Street, Cityville',
-            summary: "Performed interior and exterior painting services."
+            title: 'the cottage',
+            summary: "house cleaning."
         },
-        {
-            image: require(`@/public/custodial/3.jpeg`).default.src,
-            title: '789 Oak Avenue, Suburbia',
-            summary: "Provided comprehensive custodial services for the property."
-        },
+
         {
             image: require(`@/public/custodial/4.jpeg`).default.src,
-            title: '101 Pine Road, Rural Village',
-            summary: "Managed property operations and maintenance tasks."
+            title: 'Urban Blue',
+            summary: "house keeping"
         },
         {
             image: require(`@/public/custodial/5.jpeg`).default.src,
-            title: '222 Maple Lane, Townsville',
-            summary: "Completed landscaping and garden maintenance."
+            title: 'Urban Blue',
+            summary: "house keeping"
         },
         {
             image: require(`@/public/custodial/6.jpeg`).default.src,
-            title: '333 Cedar Street, Urbania',
-            summary: "Performed interior and exterior painting services."
+            title: 'Urban Blue',
+            summary: "house keeping"
         },
         {
             image: require(`@/public/custodial/7.jpeg`).default.src,
-            title: '101 Pine Road, Rural Village',
-            summary: "Managed property operations and maintenance tasks."
+            title: 'Urban Blue',
+            summary: "house keeping"
         },
         {
             image: require(`@/public/custodial/8.jpeg`).default.src,
-            title: '222 Maple Lane, Townsville',
-            summary: "Completed landscaping and garden maintenance."
+            title: 'magestics',
+            summary: "house cleaning."
         },
 
     ],
     "management": [
-        {
-            image: require(`@/public/management/1.jpeg`).default.src,
-            title: '123 Main Street, Anytown',
-            summary: "Completed landscaping and garden maintenance."
-        },
-        {
-            image: require(`@/public/management/2.jpeg`).default.src,
-            title: '456 Elm Street, Cityville',
-            summary: "Performed interior and exterior painting services."
-        },
-        {
-            image: require(`@/public/management/3.jpeg`).default.src,
-            title: '789 Oak Avenue, Suburbia',
-            summary: "Provided comprehensive custodial services for the property."
-        },
-        {
-            image: require(`@/public/management/4.jpeg`).default.src,
-            title: '101 Pine Road, Rural Village',
-            summary: "Managed property operations and maintenance tasks."
-        },
+
         {
             image: require(`@/public/management/5.jpeg`).default.src,
-            title: '222 Maple Lane, Townsville',
-            summary: "Completed landscaping and garden maintenance."
-        },
-        {
-            image: require(`@/public/management/6.jpeg`).default.src,
-            title: '333 Cedar Street, Urbania',
-            summary: "Performed interior and exterior painting services."
-        },
-        {
-            image: require(`@/public/management/7.jpeg`).default.src,
-            title: '101 Pine Road, Rural Village',
-            summary: "Managed property operations and maintenance tasks."
-        },
-        {
-            image: require(`@/public/management/8.jpeg`).default.src,
-            title: '222 Maple Lane, Townsville',
-            summary: "Completed landscaping and garden maintenance."
+            title: 'nautilus cove',
+            summary: "irrigation."
         },
         {
             image: require(`@/public/management/9.jpeg`).default.src,
-            title: '101 Pine Road, Rural Village',
-            summary: "Managed property operations and maintenance tasks."
+            title: 'nautilus cove',
+            summary: "Irrigation."
         },
         {
             image: require(`@/public/management/10.jpeg`).default.src,
-            title: '222 Maple Lane, Townsville',
-            summary: "Completed landscaping and garden maintenance."
+            title: 'nautilus cove',
+            summary: "General Pic."
         },
         {
             image: require(`@/public/management/11.jpeg`).default.src,
-            title: '101 Pine Road, Rural Village',
-            summary: "Managed property operations and maintenance tasks."
+            title: 'long beach',
+            summary: "pool service."
         },
         {
             image: require(`@/public/management/12.jpeg`).default.src,
-            title: '222 Maple Lane, Townsville',
-            summary: "Completed landscaping and garden maintenance."
+            title: 'long beach',
+            summary: "landscaping - orientation setup."
         },
 
     ]
-
 }
 
 export default function Page() {
