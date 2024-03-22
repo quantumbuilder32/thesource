@@ -26,7 +26,7 @@ export default function Navbar({ menuItemArr = navItemsArr }: { menuItemArr?: me
                         <div className={styles.splitCont} style={{ flex: "1 1 700px" }}>
                             {menuItemArr.slice(0, 3).map((eachMenuItem) => {
                                 return (
-                                    <MenuItem key={eachMenuItem.id} eachMenuItem={eachMenuItem} />
+                                    <MenuItem key={eachMenuItem.id} eachMenuItem={eachMenuItem} menuItemsShowingSet={menuItemsShowingSet} />
                                 )
                             })}
                         </div>
@@ -34,7 +34,7 @@ export default function Navbar({ menuItemArr = navItemsArr }: { menuItemArr?: me
                         <div className={styles.splitCont} style={{}}>
                             {menuItemArr.slice(3, 5).map((eachMenuItem) => {
                                 return (
-                                    <MenuItem key={eachMenuItem.id} eachMenuItem={eachMenuItem} />
+                                    <MenuItem key={eachMenuItem.id} eachMenuItem={eachMenuItem} menuItemsShowingSet={menuItemsShowingSet} />
                                 )
                             })}
                         </div>
@@ -46,7 +46,7 @@ export default function Navbar({ menuItemArr = navItemsArr }: { menuItemArr?: me
     )
 }
 
-function MenuItem({ eachMenuItem }: { eachMenuItem: menuItem }) {
+function MenuItem({ eachMenuItem, menuItemsShowingSet }: { eachMenuItem: menuItem, menuItemsShowingSet: React.Dispatch<React.SetStateAction<boolean>> }) {
     const [subMenuShowing, subMenuShowingSet] = useState(false)
     const pathname = usePathname()
 
@@ -55,7 +55,11 @@ function MenuItem({ eachMenuItem }: { eachMenuItem: menuItem }) {
             <div className={styles.chevronCont} style={{ display: "flex", flexWrap: "wrap", gap: ".5rem", alignItems: "center", padding: "1.25rem 1rem", cursor: "pointer", textTransform: "uppercase", fontWeight: "100", }} onClick={() => {
                 subMenuShowingSet(prev => !prev)
             }}>
-                {eachMenuItem.subMenu ? <p>{eachMenuItem.title}</p> : <Link href={eachMenuItem.link}>{eachMenuItem.title}</Link>}
+                {eachMenuItem.subMenu ? <p>{eachMenuItem.title}</p> :
+                    <Link href={eachMenuItem.link} onClick={() => {
+                        menuItemsShowingSet(false)
+                    }}>{eachMenuItem.title}</Link>
+                }
 
                 {eachMenuItem.subMenu && (
                     <svg style={{ rotate: subMenuShowing ? "180deg" : "", width: ".5rem" }} viewBox="0 0 96 96">
@@ -68,7 +72,9 @@ function MenuItem({ eachMenuItem }: { eachMenuItem: menuItem }) {
                 <ul className={styles.subMenuCont} onClick={() => subMenuShowingSet(false)}>
                     {eachMenuItem.subMenu.map((eachSubMenuItem) => {
                         return (
-                            <li key={eachSubMenuItem.id} className={styles.subMenuItem} style={{ borderBottom: pathname === eachSubMenuItem.link ? "2px solid var(--primaryColor)" : "", }}>
+                            <li key={eachSubMenuItem.id} className={styles.subMenuItem} style={{ borderBottom: pathname === eachSubMenuItem.link ? "2px solid var(--primaryColor)" : "", }} onClick={() => {
+                                menuItemsShowingSet(false)
+                            }}>
                                 <Link href={eachSubMenuItem.link}>
                                     {eachSubMenuItem.title}
                                 </Link>
