@@ -124,6 +124,36 @@ textarea:focus {
 
 
 /* custom classes */
+.mainButton {
+  display: flex;
+  padding: 1rem 2rem;
+  gap: .5rem;
+  border-radius: .5rem;
+  background-color: var(--primaryColor);
+  transition: background-color 600ms, color 600ms;
+  align-items: center;
+  color: #000;
+  font-weight: 300;
+  cursor: pointer;
+}
+
+.mainButton svg {
+  fill: #000;
+  transition: fill 600ms;
+
+}
+
+.mainButton:hover {
+  background-color: #000;
+  color: #fff
+}
+
+.mainButton:hover svg {
+  fill: #fff
+}
+
+
+
 .hoverHighlight {
   cursor: pointer;
   filter: brightness(.6);
