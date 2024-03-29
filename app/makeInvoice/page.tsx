@@ -4,9 +4,9 @@ import { useState, useRef, useEffect, useMemo } from "react"
 import styles from "./page.module.css"
 import { useReactToPrint } from 'react-to-print';
 import Image from "next/image";
-import { Playfair_Display } from "next/font/google";
 import ShowMore from "@/components/showMore/ShowMore";
 import { TextInput } from "@/components/reusables/inputs/Inputs";
+import MainButton from "@/components/reusables/buttons/mainbutton/MainButton";
 
 type invoiceType = {
     homeCompanyLogo: string,
@@ -21,9 +21,11 @@ type invoiceType = {
     homePhoneNumber: string,
     homeWebsite: string,
     homeEmail: string,
+    homeTermsAndConditions: string,
     tax: number,
     discount: number,
-    services: invoiceService[]
+    services: invoiceService[],
+    paymentMethods: paymentMethod[]
 }
 
 type InvoiceFieldType = keyof invoiceType;
@@ -33,6 +35,11 @@ type invoiceService = {
     description: string,
     price: number,
     quantity: number
+}
+
+type paymentMethod = {
+    name: string,
+    info: string,
 }
 
 
@@ -51,52 +58,86 @@ const formatter = new Intl.NumberFormat('en-US', {
     currency: 'USD',
 });
 
-export default function Page() {
+const fillData: invoiceType = {
+    homeCompanyLogo: require(`@/public/logo.png`).default.src,
+    homeAddress: generalInfo.address,
+    homeEmail: generalInfo.email,
+    homePhoneNumber: generalInfo.phone,
+    homeWebsite: generalInfo.website,
+
+    homeTermsAndConditions: "All services rendered are subject to TheSourceBPS' standard terms and conditions available on our website.",
+    invoiceTo: "Tech Solutions Inc",
+    invoiceToAddress: "123 Tech Avenue, Suite 101",
+    invoiceToEmail: "billing@techsolutions.com",
+    invoiceToPhoneNumber: "(800) 555-1234",
+    invoiceNumber: makeInvoiceNumber(),
+    invoiceDate: new Date(),
+    issueDate: new Date(),
+    tax: 0,
+    discount: 0,
+    services: [
+        {
+            name: "Software Development",
+            description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+            price: 1500,
+            quantity: 1
+        },
+        {
+            name: "IT Consulting",
+            description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+            price: 1000,
+            quantity: 1
+        },
+        {
+            name: "Network Security",
+            description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+            price: 800,
+            quantity: 1
+        },
+    ],
+    paymentMethods: [
+        {
+            name: "Paypal",
+            info: "test@paypal.com",
+        },
+        {
+            name: "CardPayment",
+            info: "Visa/Mastercard",
+        }
+    ]
+
+}
+const initialData: invoiceType = {
+    homeCompanyLogo: require(`@/public/logo.png`).default.src,
+    homeAddress: generalInfo.address,
+    homeEmail: generalInfo.email,
+    homePhoneNumber: generalInfo.phone,
+    homeWebsite: generalInfo.website,
+    homeTermsAndConditions: "All services rendered are subject to TheSourceBPS' standard terms and conditions available on our website.",
+
+    invoiceTo: "",
+    invoiceToAddress: "",
+    invoiceToEmail: "",
+    invoiceToPhoneNumber: "",
+    invoiceNumber: makeInvoiceNumber(),
+    invoiceDate: new Date,
+    issueDate: new Date,
+    tax: 0,
+    discount: 0,
+    services: [],
+    paymentMethods: []
+}
+
+export default function Page({ searchParams }: { searchParams: { fillData: string } }) {
+    const usingFillData = searchParams.fillData !== undefined
+
+    console.log(`$usingFillData`, usingFillData);
     const contentToPrint = useRef<HTMLDivElement>(null);
 
-    const [invoice, invoiceSet] = useState<invoiceType>({
-        homeCompanyLogo: require(`@/public/logo.png`).default.src,
-        homeAddress: generalInfo.address,
-        homeEmail: generalInfo.email,
-        homePhoneNumber: generalInfo.phone,
-        homeWebsite: generalInfo.website,
-
-        invoiceTo: "TestNameLTD",
-        invoiceToAddress: "test address 123 parkway drive",
-        invoiceToEmail: "billing@testnameltd.com",
-        invoiceToPhoneNumber: "(855) 123 - 4567",
-
-
-        invoiceNumber: makeInvoiceNumber(),
-        invoiceDate: new Date,
-        issueDate: new Date,
-        tax: 0,
-        discount: 0,
-        services: [
-            {
-                name: "Web Design",
-                description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-                price: 200,
-                quantity: 2
-            },
-            {
-                name: "Graphic Design",
-                description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-                price: 300,
-                quantity: 3
-            },
-            {
-                name: "Digital Marketing",
-                description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-                price: 100,
-                quantity: 3
-            },
-        ]
-    })
+    const [invoice, invoiceSet] = useState<invoiceType>(usingFillData ? { ...fillData } : { ...initialData })
 
     const [customScale, customScaleSet] = useState(1)
-    const [showingSettings, showingSettingsSet] = useState(true)
-
+    const [showingSettings, showingSettingsSet] = useState(false)
 
     function updateInvoice<T extends InvoiceFieldType>(fieldName: T, fieldValue: invoiceType[T]) {
         invoiceSet(prevInvoice => {
@@ -171,6 +212,25 @@ export default function Page() {
             updateInvoice("services", filteredArray)
         }
     }
+
+    const handlePaymentMethod = (option: "add" | "sub", subIndex?: number) => {
+        if (option === "add") {
+            const newPaymentMethod: paymentMethod = {
+                name: "",
+                info: ""
+            }
+
+            updateInvoice("paymentMethods", [...invoice.paymentMethods, newPaymentMethod])
+
+        } else if (option === "sub") {
+            if (subIndex === undefined) return
+
+            const filteredArray = invoice.paymentMethods.filter((eachPaymentMethod, eachPaymentMethodIndex) => eachPaymentMethodIndex !== subIndex)
+
+            updateInvoice("paymentMethods", filteredArray)
+        }
+    }
+
 
     const totalPrice = useMemo(() => {
         if (!invoice.services) return 0
@@ -287,11 +347,15 @@ export default function Page() {
                         <div className={`${styles.tableRowCont}`}>
                             <div style={{ gridColumn: "span 2", textAlign: "left", paddingTop: "3%", backgroundColor: "transparent" }}>
                                 <h3>Terms & Conditions:</h3>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
+                                <p>{invoice.homeTermsAndConditions}</p>
 
                                 <h3 style={{ marginTop: "4%" }}>Payment Method</h3>
-                                <p><b>PayPal:</b> email</p>
-                                <p><b>CardPayment:</b> visa/mastercard</p>
+
+                                {invoice.paymentMethods.map((eachPaymentMethod, eachPaymentMethodIndex) => {
+                                    return (
+                                        <p key={eachPaymentMethodIndex}><b>{eachPaymentMethod.name}: </b> {eachPaymentMethod.info}</p>
+                                    )
+                                })}
                             </div>
 
                             <div style={{ gridColumn: "span 3", backgroundColor: "#eee", padding: '0' }}>
@@ -376,7 +440,7 @@ export default function Page() {
 
 
             {!showingSettings && (
-                <div onClick={() => { showingSettingsSet(true) }} style={{ position: 'absolute', top: "50%", right: 0, translate: "0 -50%", rotate: "90deg", }}>
+                <div onClick={() => { showingSettingsSet(true) }} style={{ position: 'absolute', top: "50%", right: "1rem", translate: "0 -50%", rotate: "90deg", }}>
                     <svg style={{ width: "3rem" }} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M384 480c35.3 0 64-28.7 64-64l0-320c0-35.3-28.7-64-64-64L64 32C28.7 32 0 60.7 0 96L0 416c0 35.3 28.7 64 64 64l320 0zM224 352c-6.7 0-13-2.8-17.6-7.7l-104-112c-6.5-7-8.2-17.2-4.4-25.9s12.5-14.4 22-14.4l208 0c9.5 0 18.2 5.7 22 14.4s2.1 18.9-4.4 25.9l-104 112c-4.5 4.9-10.9 7.7-17.6 7.7z" /></svg>
                 </div>
             )}
@@ -402,7 +466,7 @@ export default function Page() {
                 }} />
 
                 <ShowMore
-                    label="Invoice Details"
+                    label="Invoice No"
                     content={
                         <div style={{ display: "grid" }}>
                             <button className="mainButton" style={{ justifySelf: "flex-end" }} onClick={() => { updateInvoice("invoiceNumber", makeInvoiceNumber()) }}>New Invoice No.</button>
@@ -412,6 +476,8 @@ export default function Page() {
                             <TextInput type="date" name="invoiceDate" labelName="Invoice Date" placeHolder="Enter Invoice Date" value={invoice.invoiceDate.toISOString().split('T')[0]} onChange={handleInputFields} />
 
                             <TextInput type="date" name="issueDate" labelName="Issue Date" placeHolder="Enter Issue Date" value={invoice.invoiceDate.toISOString().split('T')[0]} onChange={handleInputFields} />
+
+                            <MainButton link="?fillData=true" text="View Test Data" target="blank_" style={{ justifySelf: "flex-end", marginTop: "1rem" }} />
                         </div>
                     } />
 
@@ -426,6 +492,36 @@ export default function Page() {
                             <TextInput name="invoiceToPhoneNumber" labelName="Recipient Phone Number" placeHolder="Enter Recipient Phone Number" value={invoice.invoiceToPhoneNumber} onChange={handleInputFields} />
 
                             <TextInput name="invoiceToEmail" labelName="Recipient Email" placeHolder="Enter Recipient Email" value={invoice.invoiceToEmail} onChange={handleInputFields} />
+
+                            <div className={`snap ${styles.paymentMethodCont}`} style={{ display: "grid", gridAutoFlow: "column", gridAutoColumns: "100%", gap: "1rem", overflowX: "auto", marginTop: "1rem", paddingBottom: ".5rem" }}>
+                                {invoice.paymentMethods.map((eachPaymentMethod, eachPaymentMethodIndex) => {
+                                    return (
+                                        <div key={eachPaymentMethodIndex} style={{ display: "grid", backgroundColor: "#f5deb3", padding: "1rem" }}>
+                                            <button style={{ justifySelf: "flex-end" }} className="mainButton" onClick={() => {
+                                                handlePaymentMethod("sub", eachPaymentMethodIndex)
+                                            }}>delete</button>
+
+                                            <TextInput name={`payment method name ${eachPaymentMethodIndex}`} labelName={"Payment Method Name"} placeHolder="Enter Payment Method Name" value={eachPaymentMethod.name}
+                                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                                                    const newPaymentMethodArray = [...invoice.paymentMethods]
+                                                    newPaymentMethodArray[eachPaymentMethodIndex].name = e.target.value
+
+                                                    updateInvoice("paymentMethods", newPaymentMethodArray)
+                                                }} />
+
+                                            <TextInput name={`payment method info ${eachPaymentMethodIndex}`} labelName={"Payment Method Info"} placeHolder="Enter Payment Method Info" value={eachPaymentMethod.info}
+                                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                                                    const newPaymentMethodArray = [...invoice.paymentMethods]
+                                                    newPaymentMethodArray[eachPaymentMethodIndex].info = e.target.value
+
+                                                    updateInvoice("paymentMethods", newPaymentMethodArray)
+                                                }} />
+                                        </div>
+                                    )
+                                })}
+                            </div>
+
+                            <button className="mainButton" style={{ justifySelf: "flex-end", margin: "1rem" }} onClick={() => { handlePaymentMethod("add") }}>Add Payment Method</button>
                         </div>
                     } />
 
@@ -503,6 +599,8 @@ export default function Page() {
                             <TextInput name="homeWebsite" labelName="Company Website" placeHolder="Enter Website" value={invoice.homeWebsite} onChange={handleInputFields} />
 
                             <TextInput name="homeEmail" labelName="Company Email" placeHolder="Enter Email" value={invoice.homeEmail} onChange={handleInputFields} />
+
+                            <TextInput name="homeTermsAndConditions" labelName="Terms & Conditions" placeHolder="Enter Terms" value={invoice.homeTermsAndConditions} onChange={handleInputFields} />
                         </div>
                     } />
             </div>
