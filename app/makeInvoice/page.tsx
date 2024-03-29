@@ -14,8 +14,8 @@ type invoiceType = {
     invoiceToPhoneNumber: string,
     invoiceToEmail: string,
     invoiceNumber: string,
-    invoiceDate: Date,
-    issueDate: Date,
+    invoiceDate: string,
+    issueDate: string,
     invoiceTo: string,
     homeAddress: string,
     homePhoneNumber: string,
@@ -71,8 +71,8 @@ const fillData: invoiceType = {
     invoiceToEmail: "billing@techsolutions.com",
     invoiceToPhoneNumber: "(800) 555-1234",
     invoiceNumber: makeInvoiceNumber(),
-    invoiceDate: new Date(),
-    issueDate: new Date(),
+    invoiceDate: new Date().toLocaleDateString(),
+    issueDate: new Date().toLocaleDateString(),
     tax: 0,
     discount: 0,
     services: [
@@ -120,8 +120,8 @@ const initialData: invoiceType = {
     invoiceToEmail: "",
     invoiceToPhoneNumber: "",
     invoiceNumber: makeInvoiceNumber(),
-    invoiceDate: new Date,
-    issueDate: new Date,
+    invoiceDate: new Date().toLocaleDateString(),
+    issueDate: new Date().toLocaleDateString(),
     tax: 0,
     discount: 0,
     services: [],
@@ -129,12 +129,9 @@ const initialData: invoiceType = {
 }
 
 export default function Page({ searchParams }: { searchParams: { fillData: string } }) {
-    const usingFillData = searchParams.fillData !== undefined
-
-    console.log(`$usingFillData`, usingFillData);
     const contentToPrint = useRef<HTMLDivElement>(null);
 
-    const [invoice, invoiceSet] = useState<invoiceType>(usingFillData ? { ...fillData } : { ...initialData })
+    const [invoice, invoiceSet] = useState<invoiceType>(searchParams.fillData !== undefined ? { ...fillData } : { ...initialData })
 
     const [customScale, customScaleSet] = useState(1)
     const [showingSettings, showingSettingsSet] = useState(false)
@@ -146,6 +143,40 @@ export default function Page({ searchParams }: { searchParams: { fillData: strin
             return newInvoice;
         });
     }
+
+    const DownloadInvoice = (data: any, filename: string) => {
+        const jsonData = JSON.stringify(data, null, 2);
+        const blob = new Blob([jsonData], { type: 'application/json' });
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `${filename}.json`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);
+    }
+
+    const uploadInvoice = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const file = event.target.files?.[0];
+        if (!file) return
+
+        const reader = new FileReader();
+
+        reader.onload = (e) => {
+            try {
+                if (!e.target) return
+
+                const seenInvoiceData = JSON.parse(e.target.result as string);
+
+                invoiceSet(seenInvoiceData);
+            } catch (error) {
+                console.error('Error parsing JSON file:', error);
+            }
+        };
+
+        reader.readAsText(file);
+    };
 
     const handlePrint = useReactToPrint({
         documentTitle: "Invoice for ",
@@ -162,8 +193,6 @@ export default function Page({ searchParams }: { searchParams: { fillData: strin
         } else if (e.target.type === "number") {
             updateInvoice(e.target.name as keyof invoiceType, parseFloat(e.target.value))
 
-        } else if (e.target.type === "date") {
-            updateInvoice(e.target.name as keyof invoiceType, new Date(e.target.value))
         }
     }
 
@@ -231,7 +260,6 @@ export default function Page({ searchParams }: { searchParams: { fillData: strin
         }
     }
 
-
     const totalPrice = useMemo(() => {
         if (!invoice.services) return 0
 
@@ -269,8 +297,8 @@ export default function Page({ searchParams }: { searchParams: { fillData: strin
 
                         <div style={{ display: "grid", position: "relative", translate: "0 -10%" }}>
                             <p>Invoice No: {invoice.invoiceNumber}</p>
-                            <p>Invoice Date: {invoice.invoiceDate.toLocaleDateString()}</p>
-                            <p>Issue Date: {invoice.issueDate.toLocaleDateString()}</p>
+                            <p>Invoice Date: {invoice.invoiceDate}</p>
+                            <p>Issue Date: {invoice.issueDate}</p>
                         </div>
                     </div>
 
@@ -473,11 +501,9 @@ export default function Page({ searchParams }: { searchParams: { fillData: strin
 
                             <TextInput name="invoiceNumber" labelName="Invoice Number" placeHolder="Enter Invoice Number" value={invoice.invoiceNumber} onChange={handleInputFields} />
 
-                            <TextInput type="date" name="invoiceDate" labelName="Invoice Date" placeHolder="Enter Invoice Date" value={invoice.invoiceDate.toISOString().split('T')[0]} onChange={handleInputFields} />
+                            <TextInput name="invoiceDate" labelName="Invoice Date" placeHolder="Enter Invoice Date" value={invoice.invoiceDate} onChange={handleInputFields} />
 
-                            <TextInput type="date" name="issueDate" labelName="Issue Date" placeHolder="Enter Issue Date" value={invoice.invoiceDate.toISOString().split('T')[0]} onChange={handleInputFields} />
-
-                            <MainButton link="?fillData=true" text="View Test Data" target="blank_" style={{ justifySelf: "flex-end", marginTop: "1rem" }} />
+                            <TextInput name="issueDate" labelName="Issue Date" placeHolder="Enter Issue Date" value={invoice.issueDate} onChange={handleInputFields} />
                         </div>
                     } />
 
@@ -603,6 +629,25 @@ export default function Page({ searchParams }: { searchParams: { fillData: strin
                             <TextInput name="homeTermsAndConditions" labelName="Terms & Conditions" placeHolder="Enter Terms" value={invoice.homeTermsAndConditions} onChange={handleInputFields} />
                         </div>
                     } />
+
+
+                <ShowMore
+                    label="Settings"
+                    content={
+                        <div style={{ display: "grid", alignContent: "flex-start", gap: "1rem", justifyItems: "flex-start" }}>
+                            <input id="uploadJSON" type="file" accept=".json" onChange={uploadInvoice} hidden />
+
+                            <button className="mainButton">
+                                <label htmlFor="uploadJSON">Upload Invoice Settings</label>
+                            </button>
+
+                            <button className="mainButton" onClick={() => DownloadInvoice(invoice, 'invoiceData')}>
+                                Download Invoice Settings
+                            </button>
+
+
+                            <MainButton link="?fillData=true" text="View Test Data" target="blank_" />
+                        </div>} />
             </div>
         </div>
     )
