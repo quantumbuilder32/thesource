@@ -1,20 +1,23 @@
-import ContactForm from '@/components/contactForm/ContactForm'
-import MainButton from '@/components/reusables/buttons/mainbutton/MainButton'
-import { generalInfo } from '@/lib/data/GeneralInfo'
-import React from 'react'
+"use client"
+import Admin from '@/components/admin/Admin'
+import UserLoginForm from '@/components/userLoginForm/UserLoginForm'
+import { globalUser } from '@/utility/globalState'
+import { useAtom } from 'jotai'
+import React, { useEffect, useState } from 'react'
 
 export default function Page() {
-    return (
-        <div>
-            <section style={{ backgroundColor: "var(--backgroundColor)" }}>
-                <h1 style={{ textAlign: "center" }}>Admin Panel</h1>
-            </section>
+    const [seenGlobalUser, seenGlobalUserSet] = useAtom(globalUser)
 
-            <section>
-                <div>
-                    <MainButton link='/makeInvoice' text='Make Invoice' />
-                </div>
-            </section>
-        </div>
+    return (
+        <main>
+            {seenGlobalUser === undefined ? (
+                <section style={{ display: "grid", justifyContent: "center" }}>
+                    <UserLoginForm />
+                </section>
+
+            ) : (
+                <Admin />
+            )}
+        </main>
     )
 }

@@ -3,11 +3,11 @@ import React, { useState } from 'react'
 import styles from "./styles.module.css"
 import { toast } from 'react-hot-toast'
 import Image from 'next/image'
-import { saveTestimonial } from '@/serverFunctions/handleTestimonials'
-import { newReviewForm, newReviewFormSchema } from '@/types'
+import { saveTestimonial, updateTestimonial } from '@/serverFunctions/handleTestimonials'
+import { newReviewForm, newReviewFormSchema, reviewForm } from '@/types'
 
 
-export default function ReviewForm() {
+export default function ReviewForm({ adminAccess = false, formIndexId = "", passedFormObj }: { adminAccess?: boolean, formIndexId?: string, passedFormObj?: reviewForm }) {
     const initialForm: newReviewForm = {
         name: "",
         testimonial: "",
@@ -16,7 +16,7 @@ export default function ReviewForm() {
         accepted: false,
     }
 
-    const [formObj, formObjSet] = useState({ ...initialForm })
+    const [formObj, formObjSet] = useState({ ...(adminAccess ? passedFormObj! : initialForm) })
     const [formError, formErrorSet] = useState<{ [key: string]: string | null }>({})
 
     const checkIfValid = (seenFormObj: newReviewForm, option: string) => {
@@ -89,8 +89,14 @@ export default function ReviewForm() {
             console.log(`$testimonial cant be submitted`);
             return
         }
+        if (adminAccess) {
+            //update
+            await updateTestimonial(formObj as reviewForm)
 
-        await saveTestimonial(formObj)
+        } else {
+            //add new
+            await saveTestimonial(formObj)
+        }
 
         toast.success("Submitted Successfully!")
     }
@@ -112,24 +118,35 @@ export default function ReviewForm() {
     };
 
     return (
-        <form action={handleSubmit} className={styles.mainForm} style={{ display: "grid", alignContent: "flex-start", justifyItems: "center", gap: "1rem" }}>
+        <form action={handleSubmit} className={styles.mainForm} style={{ display: "grid", alignContent: "flex-start", gap: "1rem" }}>
             <div className={styles.formColCont} style={{ display: "grid", gap: "1rem" }}>
+                {adminAccess && (
+                    <div style={{ justifyItems: "center" }}>
+                        <button className='mainButton' onClick={() => {
+                            formObjSet(prevObj => {
+                                prevObj.accepted = !prevObj.accepted
+                                return { ...prevObj }
+                            })
+                        }}>{formObj.accepted ? "Private" : "Accept Testimonial"}</button>
+                    </div>
+                )}
+
                 <div>
                     <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: ".5rem", alignItems: "center" }}>
                         {formObj.image && (
-                            <Image alt={`pfp image`} src={formObj.image} height={100} width={100} style={{ objectFit: "cover", margin: "0 auto", borderRadius: ".2rem" }} />
+                            <Image alt={`pfp image`} src={formObj.image} height={100} width={100} style={{ objectFit: "contain", margin: "0 auto", borderRadius: ".2rem", flex: .2, height: "50px", width: "auto" }} />
                         )}
 
-                        <label htmlFor='formProfileUpload' style={{ flex: 1, backgroundColor: "#000", padding: "1rem 2rem", fontWeight: "bold", borderRadius: ".3rem", color: "#fff", cursor: "pointer" }}>
+                        <label htmlFor={`formProfileUpload${formIndexId}`} style={{ flex: 1, backgroundColor: "#000", padding: "1rem 2rem", fontWeight: "bold", borderRadius: ".3rem", color: "#fff", cursor: "pointer" }}>
                             Upload Photo / Logo - <i>optional</i>
                         </label>
                     </div>
 
-                    <input id="formProfileUpload" type="file" accept="image/*" onChange={changeImageToString} hidden />
+                    <input id={`formProfileUpload${formIndexId}`} type="file" accept="image/*" onChange={changeImageToString} hidden />
                 </div>
 
                 <div>
-                    <input id='sentName' type='text' value={formObj.name} onChange={(e) => {
+                    <input id={`sentName${formIndexId}`} type='text' value={formObj.name} onChange={(e) => {
                         formObjSet(prevObj => {
                             prevObj.name = e.target.value
 
@@ -144,7 +161,7 @@ export default function ReviewForm() {
                 </div>
 
                 <div>
-                    <input id="sentTitle" type='text' value={formObj.title} onChange={(e) => {
+                    <input id={`sentTitle${formIndexId}`} type='text' value={formObj.title} onChange={(e) => {
                         formObjSet(prevObj => {
                             prevObj.title = e.target.value
                             checkIfValid(prevObj, "title")
@@ -160,7 +177,7 @@ export default function ReviewForm() {
                 </div>
 
                 <div>
-                    <textarea id="sentTestimonial" name='testimonial' placeholder='Testimonial' value={formObj.testimonial} onChange={(e) => {
+                    <textarea id={`sentTestimonial${formIndexId}`} name='testimonial' placeholder='Testimonial' value={formObj.testimonial} onChange={(e) => {
                         formObjSet(prevObj => {
                             prevObj.testimonial = e.target.value
                             checkIfValid(prevObj, "testimonial")

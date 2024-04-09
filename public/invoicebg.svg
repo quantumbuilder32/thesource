@@ -22,19 +22,19 @@
       }
 
       .cls-5 {
-        fill: #005289;
-      }
-
-      .cls-6 {
         fill: #fa9a20;
       }
 
-      .cls-7 {
+      .cls-6 {
         fill: #044b85;
       }
 
-      .cls-8 {
+      .cls-7 {
         fill: #e1831a;
+      }
+
+      .cls-8 {
+        fill: #005289;
       }
 
       .cls-9 {
@@ -50,11 +50,11 @@
   <path class="cls-2" d="M956-6l-5-9L863-8l9,8L1905,588l49-140Z"/>
   <path class="cls-3" d="M1950,450l-47,135,229-46Z"/>
   <path class="cls-4" d="M941-13l328,151L1920-10Z"/>
-  <path id="_1" data-name="1" class="cls-5" d="M1237,124L1856,1l92-37,654-2-22,782Z"/>
-  <path class="cls-6" d="M-26,481L427,745-19,939Z"/>
-  <path class="cls-7" d="M1416,306L-6,934,1465,332Z"/>
-  <path class="cls-8" d="M574,2850l-239,52,193,89Z"/>
-  <path class="cls-5" d="M-35,2735l-44,635,444-60,579-137Z"/>
+  <path id="_1" data-name="1" class="cls-1" d="M1237,124L1856,1l92-37,654-2-22,782Z"/>
+  <path class="cls-5" d="M-26,481L427,745-19,939Z"/>
+  <path class="cls-6" d="M1416,306L-6,934,1465,332Z"/>
+  <path class="cls-7" d="M574,2850l-239,52,193,89Z"/>
+  <path class="cls-8" d="M-35,2735l-44,635,444-60,579-137Z"/>
   <path class="cls-9" d="M1224,3309L935,3170,319,3314Z"/>
   <path class="cls-10" d="M573,2851l-49,134,708,327h131Z"/>
 </svg>

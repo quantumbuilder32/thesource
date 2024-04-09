@@ -59,7 +59,7 @@ const formatter = new Intl.NumberFormat('en-US', {
 });
 
 const fillData: invoiceType = {
-    homeCompanyLogo: require(`@/public/logo.png`).default.src,
+    homeCompanyLogo: require(`@/public/thesoucebpslogo.svg`).default.src,
     homeAddress: generalInfo.address,
     homeEmail: generalInfo.email,
     homePhoneNumber: generalInfo.phone,
@@ -108,7 +108,7 @@ const fillData: invoiceType = {
 
 }
 const initialData: invoiceType = {
-    homeCompanyLogo: require(`@/public/logo.png`).default.src,
+    homeCompanyLogo: require(`@/public/thesoucebpslogo.svg`).default.src,
     homeAddress: generalInfo.address,
     homeEmail: generalInfo.email,
     homePhoneNumber: generalInfo.phone,
@@ -302,8 +302,8 @@ export default function Page({ searchParams }: { searchParams: { fillData: strin
                         </div>
                     </div>
 
-                    <div style={{ position: "absolute", top: "1.5%", left: "77%" }}>
-                        <img alt={`logo`} src={invoice.homeCompanyLogo} width={250} height={250} style={{ objectFit: "cover" }} />
+                    <div style={{ position: "absolute", top: "1.5%", left: "76%" }}>
+                        <img alt={`logo`} src={invoice.homeCompanyLogo} width={200} height={200} style={{ objectFit: "cover" }} />
                     </div>
 
                     <div style={{ position: "absolute", top: "18%", left: "50%", display: "flex", translate: "-50% 0", gap: "2vw", width: "70%" }}>

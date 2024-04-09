@@ -8,7 +8,7 @@ export default async function Page() {
                 <h1 style={{ textAlign: "center" }}>Leave A Review</h1>
             </section>
 
-            <section>
+            <section style={{ display: "grid", justifyItems: 'center' }}>
                 <ReviewForm />
             </section>
         </main>

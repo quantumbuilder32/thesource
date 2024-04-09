@@ -1,0 +1,47 @@
+[
+  {
+    "id": "9fd89aca-19f4-476f-a8bc-0202193b3f76",
+    "name": "John Doe",
+    "testimonial": "Great service! They fixed all the issues in no time.",
+    "title": "Homeowner",
+    "image": "https://images.pexels.com/photos/3560044/pexels-photo-3560044.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    "accepted": true,
+    "dateSubmitted": "2024-03-18T21:25:32.133Z"
+  },
+  {
+    "id": "32b24b5b-a00d-48ff-bfc2-116018a4e6d4",
+    "name": "Alice Smith",
+    "testimonial": "I'm very satisfied with the painting job they did. My house looks fantastic!",
+    "title": "Business Owner",
+    "image": "",
+    "accepted": true,
+    "dateSubmitted": "2024-03-17T14:45:22.531Z"
+  },
+  {
+    "id": "9d27d34d-012b-44a2-95e8-49fbe27b9d2d",
+    "name": "Emily Johnson",
+    "testimonial": "The cleaning service was thorough and professional. Highly recommend!",
+    "title": "Landlord",
+    "image": "",
+    "accepted": true,
+    "dateSubmitted": "2024-03-16T09:10:05.811Z"
+  },
+  {
+    "id": "1ae21dae-d521-490d-b64a-a15ac3e6acea",
+    "name": "David Brown",
+    "testimonial": "Excellent management service! They handle everything with efficiency and care.",
+    "title": "Property Manager",
+    "image": "",
+    "accepted": true,
+    "dateSubmitted": "2024-03-15T17:30:40.624Z"
+  },
+  {
+    "id": "edaefcb7-0e9f-4510-890a-9138fc7dc680",
+    "name": "Sarah Wilson",
+    "testimonial": "The team was friendly and professional. I'm impressed with their attention to detail.",
+    "title": "Home Renter",
+    "image": "",
+    "accepted": true,
+    "dateSubmitted": "2024-03-14T11:20:15.927Z"
+  }
+]

@@ -12,7 +12,7 @@ export default async function Page() {
         .map(eachTestimonial => {
             return { ...eachTestimonial, dateSubmitted: new Date(eachTestimonial.dateSubmitted) }
         })
-        .sort((a, b) => - (b.dateSubmitted as any) - (a.dateSubmitted as any))
+        .sort((a, b) => (new Date(b.dateSubmitted) as any) - (new Date(a.dateSubmitted) as any))
 
     return (
         <main>
