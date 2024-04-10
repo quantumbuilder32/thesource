@@ -5,6 +5,7 @@ import { toast } from 'react-hot-toast'
 import { AuthenticateAdminUser } from '@/serverFunctions/hanldeUsers'
 import { useAtom } from 'jotai'
 import { adminUser, globalUser } from '@/utility/globalState'
+import { saveToLocalStorage } from '@/utility/saveToStorage'
 
 
 export default function UserLoginForm() {
@@ -22,6 +23,9 @@ export default function UserLoginForm() {
 
         if (authenticated) {
             seenGlobalUserSet(adminUser)
+
+            //save record to storage
+            saveToLocalStorage("user", adminUser)
         } else {
             toast.error("Couldn't authenticate")
         }

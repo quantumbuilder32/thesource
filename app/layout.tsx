@@ -4,9 +4,9 @@ import "./globals.css";
 import TopNotifs from "@/components/topnotifs/TopNotifs";
 import Logo from "@/components/logo/Logo";
 import Navbar from "@/components/navbar/Navbar";
-import AtomLoader from "@/components/AtomLoader";
 import Footer from "@/components/footer/Footer";
 import { Toaster } from "react-hot-toast";
+import AtomLoader from "@/utility/AtomLoader";
 
 const JuliusSansOne = Julius_Sans_One({ subsets: ["latin"], weight: ["400"] });
 const ArchivoNarrow = Archivo_Narrow({ subsets: ["latin"], weight: ["400", "700"] });

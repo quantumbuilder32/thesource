@@ -5,11 +5,15 @@ import ReviewForm from '@/components/reviewForm/ReviewForm'
 import { generalInfo } from '@/lib/data/GeneralInfo'
 import { deleteTestimonial, getTestimonials } from '@/serverFunctions/handleTestimonials'
 import { reviewForm } from '@/types'
+import { globalUser } from '@/utility/globalState'
+import { removeFromLocalStorage, saveToLocalStorage } from '@/utility/saveToStorage'
+import { useAtom } from 'jotai'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 
 export default function Admin() {
     const [testimonials, testimonialsSet] = useState<reviewForm[]>([])
+    const [seenGlobalUser, seenGlobalUserSet] = useAtom(globalUser)
 
     //get testimonials
     useEffect(() => {
@@ -23,7 +27,14 @@ export default function Admin() {
 
     return (
         <div style={{ color: "#000" }}>
-            <section style={{ backgroundColor: "var(--backgroundColor)" }}>
+            <section style={{ backgroundColor: "var(--backgroundColor)", display: "grid", position: "relative" }}>
+                {seenGlobalUser && (
+                    <button className='mainButton' style={{ justifySelf: "flex-end", marginBottom: "1rem" }} onClick={() => {
+                        seenGlobalUserSet(undefined)
+                        removeFromLocalStorage("user")
+                    }}>Logout</button>
+                )}
+
                 <h1 style={{ textAlign: "center", color: "#fff" }}>Admin Panel</h1>
             </section>
 

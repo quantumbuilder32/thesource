@@ -7,6 +7,9 @@ import Image from "next/image";
 import ShowMore from "@/components/showMore/ShowMore";
 import { TextInput } from "@/components/reusables/inputs/Inputs";
 import MainButton from "@/components/reusables/buttons/mainbutton/MainButton";
+import { useAtom } from "jotai";
+import { globalUser } from "@/utility/globalState";
+import Link from "next/link";
 
 type invoiceType = {
     homeCompanyLogo: string,
@@ -129,6 +132,8 @@ const initialData: invoiceType = {
 }
 
 export default function Page({ searchParams }: { searchParams: { fillData: string } }) {
+    const [seenGlobalUser,] = useAtom(globalUser)
+
     const contentToPrint = useRef<HTMLDivElement>(null);
 
     const [invoice, invoiceSet] = useState<invoiceType>(searchParams.fillData !== undefined ? { ...fillData } : { ...initialData })
@@ -285,6 +290,12 @@ export default function Page({ searchParams }: { searchParams: { fillData: strin
     const grandTotalPrice = useMemo(() => {
         return (totalPrice - discountValue) + taxValue
     }, [totalPrice, taxValue, discountValue])
+
+    if (!seenGlobalUser) {
+        return (
+            <p style={{ color: "#000" }}>Cannot View this page - please <Link href={"/admin"}>login</Link></p>
+        )
+    }
 
     return (
         <div style={{ display: "flex", position: 'relative', maxHeight: "100svh" }}>

@@ -1,6 +1,7 @@
 "use client"
 
-import { screenSizeGlobal } from "@/utility/globalState"
+import { globalUser, screenSizeGlobal } from "@/utility/globalState"
+import { retreiveFromLocalStorage } from "@/utility/saveToStorage"
 import { useAtom } from "jotai"
 import { useEffect } from "react"
 
@@ -70,6 +71,18 @@ export default function AtomLoader() {
         return () => {
             window.removeEventListener("resize", findScreenSize)
         }
+    }, [])
+
+
+
+    const [, seenGlobalUserSet] = useAtom(globalUser)
+
+    //read login user records
+    useEffect(() => {
+        const seenUser = retreiveFromLocalStorage("user")
+        if (!seenUser) return
+
+        seenGlobalUserSet(seenUser)
     }, [])
 
     return null
