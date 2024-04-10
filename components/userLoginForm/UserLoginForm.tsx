@@ -47,7 +47,7 @@ export default function UserLoginForm() {
 
             <label htmlFor='password'>Password</label>
 
-            <input id={`password`} type='text' value={formObj.password} onChange={(e) => {
+            <input id={`password`} type='password' value={formObj.password} onChange={(e) => {
                 formObjSet(prevObj => {
                     prevObj.password = e.target.value
 
