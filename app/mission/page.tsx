@@ -29,7 +29,7 @@ export default function Page() {
 
                 <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
                     <div >
-                        <Image alt={`mission image`} src={"https://images.pexels.com/photos/1459495/pexels-photo-1459495.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"} height={400} width={400} style={{ objectFit: "contain" }} />
+                        <Image alt={`mission image`} src={require(`@/public/mission.jpeg`).default.src} height={400} width={400} style={{ objectFit: "contain" }} />
                     </div>
 
                     <div style={{ flex: "1 1 300px" }}>

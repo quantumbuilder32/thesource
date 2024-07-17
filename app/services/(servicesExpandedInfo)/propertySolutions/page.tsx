@@ -6,8 +6,8 @@ import Image from 'next/image'
 export default function Page() {
     return (
         <main>
-            <section style={{ paddingBlock: "3rem", position: "relative", backgroundColor: "#0f0" }}>
-                <Image alt={`bgimage`} src="https://images.unsplash.com/photo-1560749003-f4b1e17e2dff?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" fill={true} style={{ flex: "1 1 300px", objectFit: "cover", top: 0, right: 0, height: "100%" }} />
+            <section style={{ paddingBlock: "3rem", position: "relative" }}>
+                <Image alt={`bgimage`} src={require(`@/public/propertySolutionsBg.jpg`).default.src} fill={true} style={{ flex: "1 1 300px", objectFit: "cover", top: 0, right: 0, height: "100%" }} />
 
                 <div style={{ position: "absolute", top: 0, left: 0, bottom: 0, right: 0, background: "linear-gradient(to right, var(--primaryColor), var(--primaryColor), transparent", }}></div>
 

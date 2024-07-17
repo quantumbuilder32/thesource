@@ -1,5 +1,5 @@
 .button {
-    background-color: var(--tertiaryColorz);
+    background-color: var(--tertiaryColor);
     transition: background-color 400ms;
     padding: 1rem 2rem;
     font-weight: 300;

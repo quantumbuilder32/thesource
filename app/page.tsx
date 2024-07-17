@@ -14,7 +14,7 @@ export default function Home() {
 
       <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem", paddingBlock: "2rem" }}>
         <div style={{ flex: "1 3 300px", position: "relative" }}>
-          <Image alt={`services intro image`} src={"https://images.pexels.com/photos/450064/pexels-photo-450064.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"} fill={true} style={{ objectFit: "cover" }} />
+          <Image alt={`services intro image`} src={require(`@/public/servicesIntro.jpeg`).default.src} fill={true} style={{ objectFit: "cover" }} />
 
           <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, background: "linear-gradient(to right, var(--primaryColor),var(--primaryColor), transparent)" }}></div>
 

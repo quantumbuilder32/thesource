@@ -127,7 +127,7 @@ export default function ReviewForm({ adminAccess = false, formIndexId = "", pass
                                 prevObj.accepted = !prevObj.accepted
                                 return { ...prevObj }
                             })
-                        }}>{formObj.accepted ? "Private" : "Accept Testimonial"}</button>
+                        }}>{formObj.accepted ? "Make Private" : "Accept Testimonial"}</button>
                     </div>
                 )}
 
