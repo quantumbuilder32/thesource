@@ -14,7 +14,7 @@ export default function Home() {
 
       <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem", paddingBlock: "2rem" }}>
         <div style={{ flex: "1 3 300px", position: "relative" }}>
-          <Image alt={`services intro image`} src={require(`@/public/servicesIntro.jpeg`).default.src} fill={true} style={{ objectFit: "cover" }} />
+          <Image alt={`services intro image`} src={require(`@/public/servicesIntro.jpeg`).default.src} fill={true} sizes="(max-width: 600px) 100vw, 33vw" style={{ objectFit: "cover" }} />
 
           <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, background: "linear-gradient(to right, var(--primaryColor),var(--primaryColor), transparent)" }}></div>
 
