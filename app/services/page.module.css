@@ -1,0 +1,8 @@
+.navLink {
+    border-bottom: 2px solid transparent;
+    transition: border-bottom 200ms, color 200ms;
+}
+
+.navLink:hover {
+    color: var(--secondaryColor);
+}

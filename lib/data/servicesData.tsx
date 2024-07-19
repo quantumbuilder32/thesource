@@ -104,7 +104,11 @@ export const servicesSummaryData = [
   }
 ]
 
-
+export const moreServices = [
+  "Property Debris Removal",
+  "Home Renovation Debris Cleanup",
+  "On Call House Cleaning",
+]
 
 
 
@@ -132,3 +136,4 @@ export const whyChooseUsData: { [key: string]: whyChooseUsType } = {
     summary: "At The Source, we offer professional property management services to ensure the efficient operation and maintenance of your residential or commercial property. From CAM services to office management, we provide comprehensive solutions to meet your needs."
   }
 }
+
