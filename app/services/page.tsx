@@ -1,7 +1,5 @@
 import React from 'react'
 import styles from "./page.module.css"
-import Link from 'next/link'
-import MainButton from '@/components/reusables/buttons/mainbutton/MainButton'
 import Image from 'next/image'
 import SecondaryButton from '@/components/reusables/buttons/secondaryButton/SecondaryButton'
 import LeftSideInfo from './LeftSideInfo'

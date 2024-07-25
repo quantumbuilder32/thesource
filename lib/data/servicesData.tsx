@@ -108,6 +108,7 @@ export const moreServices = [
   "Property Debris Removal",
   "Home Renovation Debris Cleanup",
   "On Call House Cleaning",
+  "Commercial Cleanup",
 ]
 
 

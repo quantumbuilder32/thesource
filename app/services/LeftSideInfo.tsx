@@ -30,7 +30,7 @@ export default function LeftSideInfo() {
 
                     {moreServices.map((eachService, eachServiceIndex) => {
                         return (
-                            <li key={eachServiceIndex} style={{ padding: "1rem", borderBottom: "2px solid transparent", position: "relative" }}>
+                            <li key={eachServiceIndex} style={{ padding: "1rem", borderBottom: "2px solid transparent", position: "relative", textTransform: "capitalize" }}>
                                 <span style={{ position: "absolute", top: "50%", left: 0, translate: "0 -50%" }}>»</span>
 
                                 {eachService}
